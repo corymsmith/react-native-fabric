@@ -43,13 +43,19 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void logAddToCart(double itemPrice, String currency, String itemName, String itemType, String itemId, ReadableMap customAttributes) {
+    public void logAddToCart(String itemPrice, String currency, String itemName, String itemType, String itemId, ReadableMap customAttributes) {
+
         AddToCartEvent event = new AddToCartEvent();
-        event.putCurrency(Currency.getInstance(currency));
-        event.putItemPrice(BigDecimal.valueOf(itemPrice));
-        event.putItemName(itemName);
-        event.putItemType(itemType);
-        event.putItemId(itemId);
+        if (currency != null)
+            event.putCurrency(Currency.getInstance(currency));
+        if (itemPrice != null)
+            event.putItemPrice(new BigDecimal(itemPrice));
+        if (itemName != null)
+            event.putItemName(itemName);
+        if (itemType != null)
+            event.putItemType(itemType);
+        if (itemId != null)
+            event.putItemId(itemId);
         addCustomAttributes(event, customAttributes);
         Answers.getInstance().logAddToCart(event);
     }
@@ -57,9 +63,13 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
     @ReactMethod
     public void logContentView(String contentName, String contentType, String contentId, ReadableMap customAttributes) {
         ContentViewEvent event = new ContentViewEvent();
-        event.putContentId(contentId);
-        event.putContentType(contentType);
-        event.putContentName(contentName);
+        if (contentId != null)
+            event.putContentId(contentId);
+        if (contentType != null)
+            event.putContentType(contentType);
+        if (contentName != null)
+            event.putContentName(contentName);
+
         addCustomAttributes(event, customAttributes);
         Answers.getInstance().logContentView(event);
     }
@@ -88,11 +98,16 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void logLevelEnd(String levelName, double score, boolean success, ReadableMap customAttributes) {
+    public void logLevelEnd(String levelName, String score, boolean success, ReadableMap customAttributes) {
         LevelEndEvent event = new LevelEndEvent();
-        event.putLevelName(levelName);
+        if (levelName != null)
+            event.putLevelName(levelName);
+
         event.putSuccess(success);
-        event.putScore(score);
+
+        if (score != null)
+            event.putScore(Double.valueOf(score));
+
         addCustomAttributes(event, customAttributes);
         Answers.getInstance().logLevelEnd(event);
     }
@@ -107,25 +122,37 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void logPurchase(double itemPrice, String currency, boolean success, String itemName, String itemType, String itemId, ReadableMap customAttributes) {
+    public void logPurchase(String itemPrice, String currency, boolean success, String itemName, String itemType, String itemId, ReadableMap customAttributes) {
         PurchaseEvent event = new PurchaseEvent();
-        event.putItemPrice(BigDecimal.valueOf(itemPrice));
-        event.putCurrency(getCurrency(currency));
+
+        if (currency != null)
+            event.putCurrency(Currency.getInstance(currency));
+        if (itemPrice != null)
+            event.putItemPrice(new BigDecimal(itemPrice));
+        if (itemName != null)
+            event.putItemName(itemName);
+        if (itemType != null)
+            event.putItemType(itemType);
+        if (itemId != null)
+            event.putItemId(itemId);
+
         event.putSuccess(success);
-        event.putItemName(itemName);
-        event.putItemType(itemType);
-        event.putItemId(itemId);
         addCustomAttributes(event, customAttributes);
         Answers.getInstance().logPurchase(event);
     }
 
     @ReactMethod
-    public void logRating(int rating, String contentId, String contentType, String contentName, ReadableMap customAttributes) {
+    public void logRating(String rating, String contentId, String contentType, String contentName, ReadableMap customAttributes) {
         RatingEvent event = new RatingEvent();
-        event.putContentId(contentId);
-        event.putContentType(contentType);
-        event.putContentName(contentName);
-        event.putRating(rating);
+        event.putRating(Integer.valueOf(rating));
+
+        if (contentId != null)
+            event.putContentId(contentId);
+        if (contentType != null)
+            event.putContentType(contentType);
+        if (contentName != null)
+            event.putContentName(contentName);
+
         addCustomAttributes(event, customAttributes);
         Answers.getInstance().logRating(event);
     }
@@ -142,9 +169,12 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
     public void logShare(String method, String contentName, String contentType, String contentId, ReadableMap customAttributes) {
         ShareEvent event = new ShareEvent();
         event.putMethod(method);
-        event.putContentName(contentName);
-        event.putContentType(contentType);
-        event.putContentId(contentId);
+        if (contentId != null)
+            event.putContentId(contentId);
+        if (contentType != null)
+            event.putContentType(contentType);
+        if (contentName != null)
+            event.putContentName(contentName);
         addCustomAttributes(event, customAttributes);
         Answers.getInstance().logShare(event);
     }
@@ -158,15 +188,22 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
         Answers.getInstance().logSignUp(event);
     }
 
-    private Currency getCurrency(String currency) {
-        if (currency == null) {
-            currency = "usd";
-        }
-        return Currency.getInstance(currency);
+    @ReactMethod
+    public void logStartCheckout(String totalPrice, String count, String currency, ReadableMap customAttributes) {
+        StartCheckoutEvent event = new StartCheckoutEvent();
+        if (currency != null)
+            event.putCurrency(Currency.getInstance(currency));
+        if (count != null)
+            event.putItemCount(Integer.valueOf(count));
+        if (totalPrice != null)
+            event.putTotalPrice(new BigDecimal(totalPrice));
+
+        addCustomAttributes(event, customAttributes);
+        Answers.getInstance().logStartCheckout(event);
     }
 
     private void addCustomAttributes(AnswersEvent event, ReadableMap attributes) {
-        if(attributes != null) {
+        if (attributes != null) {
             ReadableMapKeySetIterator itr = attributes.keySetIterator();
             while (itr.hasNextKey()) {
                 String key = itr.nextKey();
@@ -191,14 +228,5 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
         }
     }
 
-    @ReactMethod
-    public void logStartCheckout(double totalPrice, int count, String currency, ReadableMap customAttributes) {
-        StartCheckoutEvent event = new StartCheckoutEvent();
-        event.putCurrency(getCurrency(currency));
-        event.putItemCount(count);
-        event.putTotalPrice(BigDecimal.valueOf(totalPrice));
 
-        addCustomAttributes(event, customAttributes);
-        Answers.getInstance().logStartCheckout(event);
-    }
 }
