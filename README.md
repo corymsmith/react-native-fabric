@@ -19,10 +19,11 @@ Crashlytics.setUserIdentifier('1234');
 
 Crashlytics.setBool('has_posted', true);
 
-Crashlytics.setNumber('post_count', 5);
-
 Crashlytics.setString('organization', 'Acme. Corp');
 
+
+// Due to differences in primitive types between iOS and Android I've exposed a setNumber function vs. setInt, setFloat, setDouble, setLong, etc                                        
+Crashlytics.setNumber('post_count', 5);
 
 ```
 
