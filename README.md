@@ -1,5 +1,5 @@
 # react-native-fabric
-A React Native library for Fabric, Crashlytics and Answers
+A React Native library for Fabric, Crashlytics and Answers`
 
 
 ## Installation
@@ -106,12 +106,31 @@ Crashlytics.setNumber('post_count', 5);
 ```
 
 ## Answers Usage
-To see all available methods take a look at [Answers.js](https://github.com/corymsmith/react-native-fabric/blob/master/Answers.js)
+To see all available function take a look at [Answers.js](https://github.com/corymsmith/react-native-fabric/blob/master/Answers.js)
+
+  
+
 ```js
 var Fabric = require('react-native-fabric');
 
 var { Answers } = Fabric;
 Answers.logCustom('Performed a custom event', { bigData: true });
+
+All log functions take an optional array of custom attributes as the last parameter
+Answers.logAddToCart(24.50, 'USD', 'Air Jordans', 'shoes', '987654', {color: 'red'});
+
+Answers.logInvite('Facebook');
+
+Answers.logLogin('Twitter', true);
+
+Answers.logSearch('React Native');
+
+Answers.logShare('Twitter', 'Big news article', 'post', '1234');
+
+Answers.logSignUp('Twitter', true);
+
+Answers.logPurchase(24.99,'USD',true, 'Air Jordans', 'shoes', '987654');
+
 
 ``` 
 
