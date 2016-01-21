@@ -114,9 +114,10 @@ To see all available function take a look at [Answers.js](https://github.com/cor
 var Fabric = require('react-native-fabric');
 
 var { Answers } = Fabric;
+
+// All log functions take an optional array of custom attributes as the last parameter
 Answers.logCustom('Performed a custom event', { bigData: true });
 
-All log functions take an optional array of custom attributes as the last parameter
 Answers.logAddToCart(24.50, 'USD', 'Air Jordans', 'shoes', '987654', {color: 'red'});
 
 Answers.logInvite('Facebook');
