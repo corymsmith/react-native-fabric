@@ -1,4 +1,4 @@
-package com.smixxtape.reactnativefabric;
+package com.smixx.fabric;
 
 import android.app.Activity;
 
@@ -11,10 +11,10 @@ import com.facebook.react.uimanager.ViewManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReactNativeFabric implements ReactPackage {
+public class FabricPackage implements ReactPackage {
 
     private Activity mActivity = null;
-    public ReactNativeFabric(Activity activity) {
+    public FabricPackage(Activity activity) {
         mActivity = activity;
     }
 
@@ -22,7 +22,8 @@ public class ReactNativeFabric implements ReactPackage {
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new ReactNativeCrashlytics(reactContext, mActivity));
+        modules.add(new SMXCrashlytics(reactContext, mActivity));
+        modules.add(new SMXAnswers(reactContext, mActivity));
         return modules;
     }
 

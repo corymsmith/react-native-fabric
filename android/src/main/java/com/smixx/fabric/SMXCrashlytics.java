@@ -1,4 +1,4 @@
-package com.smixxtape.reactnativefabric;
+package com.smixx.fabric;
 
 import android.app.Activity;
 import android.util.Log;
@@ -8,10 +8,10 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
-public class ReactNativeCrashlytics extends ReactContextBaseJavaModule {
+public class SMXCrashlytics extends ReactContextBaseJavaModule {
     public Activity activity;
 
-    public ReactNativeCrashlytics(ReactApplicationContext reactContext, Activity activity) {
+    public SMXCrashlytics(ReactApplicationContext reactContext, Activity activity) {
         super(reactContext);
         this.activity = activity;
     }
