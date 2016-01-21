@@ -1,23 +1,17 @@
 package com.smixxtape.reactnativefabric;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
-import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.WritableNativeMap;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterCore;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
 
-public class SMXCrashlytics extends ReactContextBaseJavaModule {
+public class ReactNativeCrashlytics extends ReactContextBaseJavaModule {
     public Activity activity;
 
-    public SMXCrashlytics(ReactApplicationContext reactContext, Activity activity) {
+    public ReactNativeCrashlytics(ReactApplicationContext reactContext, Activity activity) {
         super(reactContext);
         this.activity = activity;
     }
@@ -43,23 +37,8 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setBool(String key, boolean value) {
+    public void setBool(String key, Boolean value) {
         Crashlytics.setBool(key, value);
-    }
-
-    @ReactMethod
-    public void setDouble(String key, double value) {
-        Crashlytics.setDouble(key, value);
-    }
-
-    @ReactMethod
-    public void setFloat(String key, float value) {
-        Crashlytics.setFloat(key, value);
-    }
-
-    @ReactMethod
-    public void setLong(String key, long value) {
-        Crashlytics.setLong(key, value);
     }
 
     @ReactMethod
@@ -68,7 +47,44 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setInt(String key, int value) {
-        Crashlytics.setInt(key, value);
+    public void setNumber(String key, String numberString) {
+        try {
+            Number number = parse(numberString);
+            if (number.getClass().equals(Double.class)) {
+                Crashlytics.setDouble(key, number.doubleValue());
+            } else if (number.getClass().equals(Float.class)) {
+                Crashlytics.setFloat(key, number.floatValue());
+            } else if (number.getClass().equals(Integer.class)) {
+                Crashlytics.setInt(key, number.intValue());
+            } else if (number.getClass().equals(Long.class)) {
+                Crashlytics.setLong(key, number.longValue());
+            }
+        } catch (Exception ex) {
+            Log.e("RNFabric:", ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    private static Number parse(String str) {
+        Number number = null;
+
+        if (str.contains(".")) {
+            try {
+                number = Double.parseDouble(str);
+            } catch (NumberFormatException e) {
+                number = Float.parseFloat(str);
+            }
+        } else {
+            try {
+                number = Integer.parseInt(str);
+            } catch (NumberFormatException e2) {
+                try {
+                    number = Long.parseLong(str);
+                } catch (NumberFormatException e3) {
+                    throw e3;
+                }
+            }
+        }
+        return number;
     }
 }

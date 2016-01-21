@@ -17,9 +17,21 @@ This is a work in progress and has yet to be published to NPM
 ## Usage
 
 ```js
-var Crashlytics = require('react-native-fabric').Crashlytics;
+var Fabric = require('react-native-fabric');
+
+var { Crashlytics } = Fabric;
+
+Crashlytics.setUserName('megaman');
 
 Crashlytics.setUserEmail('user@email.com');
+
+Crashlytics.setUserIdentifier('1234');
+
+Crashlytics.setBool('has_posted', true);
+
+Crashlytics.setNumber('post_count', 5);
+
+Crashlytics.setString('organization', 'Acme. Corp');
 
 
 ```
@@ -96,7 +108,7 @@ Crashlytics.setUserEmail('user@email.com');
 
 ## Todo
 
-- [ ] Crashlytics logging / custom keys 
+- [x] Crashlytics logging / custom keys 
 - [ ] Answers for iOS
 - [ ] Answers for Android
 

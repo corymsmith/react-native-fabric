@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var { NativeModules } = require('react-native');
+var { NativeModules, Platform } = require('react-native');
 var SMXCrashlytics = NativeModules.SMXCrashlytics;
 
 module.exports = {
@@ -25,6 +25,10 @@ module.exports = {
   },
 
   setNumber: function (key:string, value:number) {
+    // This is a hack but allows us to have a standard API for both platforms
+    if (Platform.OS === 'android') {
+      value = value + "";
+    }
     SMXCrashlytics.setNumber(key, value);
   },
 
