@@ -78,4 +78,19 @@ BOOL KWObjCTypeIsUnsignedIntegral(const char *objCType) {
   strcmp(objCType, @encode(unsigned long long)) == 0;
 }
 
+//RCT_EXPORT_METHOD(setInt:(NSString *)key value:(int)integer)
+//{
+//  [[Crashlytics sharedInstance] setIntValue:integer forKey:key];
+//}
+
+//RCT_EXPORT_METHOD(setFloat:(NSString *)key value:(float)floatValue)
+//{
+//  [[Crashlytics sharedInstance] setFloatValue:floatValue forKey:key];
+//}
+
+//RCT_EXPORT_METHOD(setObject:(NSString *)key value:(NSDictionary *)obj)
+//{
+//  [[Crashlytics sharedInstance] setObjectValue:obj forKey:key];
+//}
+
 @end
