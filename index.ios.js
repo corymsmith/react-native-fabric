@@ -1,9 +1,11 @@
 /**
- * @providesModule Fabric
+ * @providesModule Crashlytics
  */
 'use strict';
-
+module.exports.Crashlytics = require('./Crashlytics');
+/*
 var { NativeModules } = require('react-native');
+
 var SMXCrashlytics = NativeModules.SMXCrashlytics;
 
 var Crashlytics = {
@@ -43,7 +45,11 @@ var Crashlytics = {
 
   setInt: function (key:string, value:number) {
     SMXCrashlytics.setInt(key, value);
+  },
+  setObject: function (key:string, value) {
+    //TODO: Doesn't exist on Android
   }
 };
 
 module.exports.Crashlytics = Crashlytics;
+  */

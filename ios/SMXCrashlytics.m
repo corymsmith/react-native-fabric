@@ -26,24 +26,51 @@ RCT_EXPORT_METHOD(setUserEmail:(NSString *)email)
   [[Crashlytics sharedInstance] setUserEmail:email];
 }
 
-RCT_EXPORT_METHOD(setInt:(NSString *)key value:(int)integer)
-{
-  [[Crashlytics sharedInstance] setIntValue:integer forKey:key];
-}
-
 RCT_EXPORT_METHOD(setBool:(NSString *)key value:(BOOL)boolValue)
 {
   [[Crashlytics sharedInstance] setBoolValue:boolValue forKey:key];
 }
 
-RCT_EXPORT_METHOD(setFloat:(NSString *)key value:(float)floatValue)
+RCT_EXPORT_METHOD(setString:(NSString *)key value:(NSString *)stringValue)
 {
-  [[Crashlytics sharedInstance] setFloatValue:floatValue forKey:key];
+  [[Crashlytics sharedInstance] setObjectValue:stringValue forKey:key];
 }
 
-RCT_EXPORT_METHOD(setObject:(NSString *)key value:(NSDictionary *)obj)
+RCT_EXPORT_METHOD(setNumber:(NSString *)key value:(nonnull NSNumber *)numberValue)
 {
-  [[Crashlytics sharedInstance] setObjectValue:obj forKey:key];
+  if(numberValue) {
+    const char *objCType = [numberValue objCType];
+    if(KWObjCTypeIsFloatingPoint(objCType)) {
+       [[Crashlytics sharedInstance] setFloatValue:[numberValue floatValue] forKey:key];
+    } else if(KWObjCTypeIsIntegral(objCType)) {
+      [[Crashlytics sharedInstance] setIntValue:[numberValue intValue] forKey:key];
+    }
+  }
+}
+
+// These functions are borrowed from https://github.com/joecannatti/Objective-C-Koans
+BOOL KWObjCTypeIsFloatingPoint(const char *objCType) {
+  return strcmp(objCType, @encode(float)) == 0 || strcmp(objCType, @encode(double)) == 0;
+}
+
+BOOL KWObjCTypeIsIntegral(const char *objCType) {
+  return KWObjCTypeIsSignedIntegral(objCType) || KWObjCTypeIsUnsignedIntegral(objCType);
+}
+
+BOOL KWObjCTypeIsSignedIntegral(const char *objCType) {
+  return strcmp(objCType, @encode(char)) == 0 ||
+  strcmp(objCType, @encode(int)) == 0 ||
+  strcmp(objCType, @encode(short)) == 0 ||
+  strcmp(objCType, @encode(long)) == 0 ||
+  strcmp(objCType, @encode(long long)) == 0;
+}
+
+BOOL KWObjCTypeIsUnsignedIntegral(const char *objCType) {
+  return strcmp(objCType, @encode(unsigned char)) == 0 ||
+  strcmp(objCType, @encode(unsigned int)) == 0 ||
+  strcmp(objCType, @encode(unsigned short)) == 0 ||
+  strcmp(objCType, @encode(unsigned long)) == 0 ||
+  strcmp(objCType, @encode(unsigned long long)) == 0;
 }
 
 @end
