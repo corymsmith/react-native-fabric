@@ -1,7 +1,16 @@
 # react-native-fabric
 A React Native library for Fabric, Crashlytics and Answers
 
-This is a work in progress and has yet to be published to NPM 
+This is a work in progress and has yet to be fully tested or published to NPM
+  
+## Todo
+
+- [x] Crashlytics logging / custom keys 
+- [x] Answers for iOS
+- [x] Answers for Android
+- [ ] TEST TEST TEST
+- [ ] Add detailed install instructions
+- [ ] Publish to NPM
 
 ## Crashlytics Usage
 To see all available methods take a look at [Crashlytics.js](https://github.com/corymsmith/react-native-fabric/blob/master/Crashlytics.js)
@@ -38,12 +47,6 @@ Answers.logCustom('Performed a custom event', { bigData: true });
 ``` 
 
 
-## Todo
-
-- [x] Crashlytics logging / custom keys 
-- [ ] Answers for iOS
-- [ ] Answers for Android
-- Publish to NPM
 
 ## License
 MIT © Cory Smith 2016
