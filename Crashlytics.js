@@ -8,6 +8,10 @@ var SMXCrashlytics = NativeModules.SMXCrashlytics;
 
 module.exports = {
 
+  log: function (message:string) {
+    SMXCrashlytics.log(message);
+  },
+
   setUserEmail: function (email:string) {
     SMXCrashlytics.setUserEmail(email);
   },

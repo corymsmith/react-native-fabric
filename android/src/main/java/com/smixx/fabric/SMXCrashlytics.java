@@ -22,6 +22,11 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void log(String message) {
+        Crashlytics.log(message);
+    }
+
+    @ReactMethod
     public void setUserEmail(String email) {
         Crashlytics.setUserEmail(email);
     }

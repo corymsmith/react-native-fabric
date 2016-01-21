@@ -11,6 +11,11 @@ RCT_EXPORT_MODULE();
   return dispatch_get_main_queue();
 }
 
+RCT_EXPORT_METHOD(log:(NSString *)message)
+{
+  CLS_LOG(@"%@", message);
+}
+
 RCT_EXPORT_METHOD(setUserIdentifier:(NSString *)userIdentifier)
 {
   [[Crashlytics sharedInstance] setUserIdentifier:userIdentifier];
