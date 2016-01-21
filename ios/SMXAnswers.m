@@ -42,14 +42,14 @@ RCT_EXPORT_METHOD(logInvite:(nullable NSString *)inviteMethodOrNil
   [Answers logInviteWithMethod:inviteMethodOrNil customAttributes:customAttributesOrNil];
 }
 
-RCT_EXPORT_METHOD(logPurchase:(nullable NSDecimalNumber *)itemPriceOrNil
+RCT_EXPORT_METHOD(logPurchase:(nullable NSString *)itemPriceOrNil
                   currency:(nullable NSString *)currencyOrNil
-                  success:(nullable NSNumber *)purchaseSucceededOrNil
+                  success:(BOOL)purchaseSucceeded
                   itemName:(nullable NSString *)itemNameOrNil
                   itemType:(nullable NSString *)itemTypeOrNil
                   itemId:(nullable NSString *)itemIdOrNil
                   customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil){
-  [Answers logPurchaseWithPrice:itemPriceOrNil currency:currencyOrNil success:purchaseSucceededOrNil itemName:itemNameOrNil itemType:itemTypeOrNil itemId:itemIdOrNil customAttributes:customAttributesOrNil];
+  [Answers logPurchaseWithPrice:[self getDecimalFromString:itemPriceOrNil] currency:currencyOrNil success:[NSNumber numberWithBool:purchaseSucceeded] itemName:itemNameOrNil itemType:itemTypeOrNil itemId:itemIdOrNil customAttributes:customAttributesOrNil];
 }
 
 RCT_EXPORT_METHOD(logLevelStart:(nullable NSString *)levelNameOrNil
@@ -58,34 +58,35 @@ RCT_EXPORT_METHOD(logLevelStart:(nullable NSString *)levelNameOrNil
 }
 
 RCT_EXPORT_METHOD(logLevelEnd:(nullable NSString *)levelNameOrNil
-                  score:(nullable NSNumber *)scoreOrNil
-                  success:(nullable NSNumber *)levelCompletedSuccesfullyOrNil
+                  score:(nullable NSString *)scoreOrNil
+                  success:(BOOL)levelCompletedSuccesfully
                   customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil){
-  [Answers logLevelEnd:levelNameOrNil score:scoreOrNil success:levelCompletedSuccesfullyOrNil customAttributes:customAttributesOrNil];
+  [Answers logLevelEnd:levelNameOrNil score:[self getDecimalFromString:scoreOrNil] success:[NSNumber numberWithBool:levelCompletedSuccesfully] customAttributes:customAttributesOrNil];
 }
 
-RCT_EXPORT_METHOD(logAddToCart:(nullable NSDecimalNumber *)itemPriceOrNil
+RCT_EXPORT_METHOD(logAddToCart:(nullable NSString *)itemPriceOrNil
                   currency:(nullable NSString *)currencyOrNil
                   itemName:(nullable NSString *)itemNameOrNil
                   itemType:(nullable NSString *)itemTypeOrNil
                   itemId:(nullable NSString *)itemIdOrNil
                   customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil){
-  [Answers logAddToCartWithPrice:itemPriceOrNil currency:currencyOrNil itemName:itemNameOrNil itemType:itemTypeOrNil itemId:itemIdOrNil customAttributes:customAttributesOrNil];
+  
+  [Answers logAddToCartWithPrice:[self getDecimalFromString:itemPriceOrNil] currency:currencyOrNil itemName:itemNameOrNil itemType:itemTypeOrNil itemId:itemIdOrNil customAttributes:customAttributesOrNil];
 }
 
-RCT_EXPORT_METHOD(logStartCheckout:(nullable NSDecimalNumber *)totalPriceOrNil
+RCT_EXPORT_METHOD(logStartCheckout:(nullable NSString *)totalPriceOrNil
                   currency:(nullable NSString *)currencyOrNil
-                  itemCount:(nullable NSNumber *)itemCountOrNil
+                  itemCount:(nullable NSString *)itemCountOrNil
                   customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil){
-  [Answers logStartCheckoutWithPrice:totalPriceOrNil currency:currencyOrNil itemCount:itemCountOrNil customAttributes:customAttributesOrNil];
+  [Answers logStartCheckoutWithPrice:[self getDecimalFromString:totalPriceOrNil] currency:currencyOrNil itemCount:[self getIntegerFromString:itemCountOrNil] customAttributes:customAttributesOrNil];
 }
 
-RCT_EXPORT_METHOD(logRating:(nullable NSNumber *)ratingOrNil
+RCT_EXPORT_METHOD(logRating:(nullable NSString *)ratingOrNil
                   contentName:(nullable NSString *)contentNameOrNil
                   contentType:(nullable NSString *)contentTypeOrNil
                   contentId:(nullable NSString *)contentIdOrNil
                   customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil){
-  [Answers logRating:ratingOrNil contentName:contentNameOrNil contentType:contentTypeOrNil contentId:contentIdOrNil customAttributes:customAttributesOrNil];
+  [Answers logRating:[self getDecimalFromString:ratingOrNil] contentName:contentNameOrNil contentType:contentTypeOrNil contentId:contentIdOrNil customAttributes:customAttributesOrNil];
 }
 
 RCT_EXPORT_METHOD(logContentView:(nullable NSString *)contentNameOrNil
@@ -103,6 +104,20 @@ RCT_EXPORT_METHOD(logSearch:(nullable NSString *)queryOrNil
 RCT_EXPORT_METHOD(logCustom:(NSString *)eventName
                   customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil){
   [Answers logCustomEventWithName:eventName customAttributes:customAttributesOrNil];
+}
+
+- (NSDecimalNumber *)getDecimalFromString:(NSString *)stringValue {
+  if(stringValue != nil) {
+    return [NSDecimalNumber decimalNumberWithString:stringValue];
+  }
+  return nil;
+}
+
+- (NSNumber *)getIntegerFromString:(NSString *)stringValue {
+  if(stringValue != nil) {
+    return [NSNumber numberWithInteger:[stringValue integerValue]];
+  }
+  return nil;
 }
 
 @end

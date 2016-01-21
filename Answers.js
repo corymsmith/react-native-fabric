@@ -11,7 +11,7 @@ module.exports = {
     SMXAnswers.logCustom(eventName, customAttributes);
   },
   logAddToCart: function (itemPrice:number, currency:string, itemName:string, itemType:string, itemId:string, customAttributes) {
-    SMXAnswers.logAddToCart(itemPrice, currency, itemName, itemType, itemId, customAttributes);
+    SMXAnswers.logAddToCart(getAsStringOrNull(itemPrice), currency, itemName, itemType, itemId, customAttributes);
   },
 
   logContentView: function (contentName:string, contentType:string, contentId:string, customAttributes) {
@@ -27,7 +27,7 @@ module.exports = {
   },
 
   logLevelEnd: function (levelName:string, score:number, success:boolean, customAttributes) {
-    SMXAnswers.logLevelEnd(levelName, score, success, customAttributes);
+    SMXAnswers.logLevelEnd(levelName, getAsStringOrNull(score), success, customAttributes);
   },
 
   logLogin: function (method:string, success:boolean, customAttributes) {
@@ -35,11 +35,11 @@ module.exports = {
   },
 
   logPurchase: function (itemPrice:number, currency:string, success:boolean, itemName:string, itemType:string, itemId:string, customAttributes) {
-    SMXAnswers.logPurchase(itemPrice,currency,success, itemName, itemType, itemId, customAttributes);
+    SMXAnswers.logPurchase(getAsStringOrNull(itemPrice), currency, success, itemName, itemType, itemId, customAttributes);
   },
 
   logRating: function (rating:number, contentId:string, contentType:string, contentName:string, customAttributes) {
-    SMXAnswers.logRating(rating, contentId, contentType, contentName, customAttributes);
+    SMXAnswers.logRating(getAsStringOrNull(rating), contentId, contentType, contentName, customAttributes);
   },
 
   logSearch: function (query:string, customAttributes) {
@@ -47,7 +47,7 @@ module.exports = {
   },
 
   logShare: function (method:string, contentName:string, contentType:string, contentId:string, customAttributes) {
-    SMXAnswers.logShare(method, contentName, contentType,contentId, customAttributes);
+    SMXAnswers.logShare(method, contentName, contentType, contentId, customAttributes);
   },
 
   logSignUp: function (method:string, success:boolean, customAttributes) {
@@ -55,8 +55,14 @@ module.exports = {
   },
 
   logStartCheckout: function (totalPrice:number, count:number, currency:string, customAttributes) {
-    SMXAnswers.logStartCheckout(totalPrice, count, currency, customAttributes);
+    SMXAnswers.logStartCheckout(getAsStringOrNull(totalPrice), getAsStringOrNull(count), currency, customAttributes);
   }
 };
+
+function getAsStringOrNull(value:number) {
+  if (value == null)
+    return value;
+  return value + "";
+}
   
 
