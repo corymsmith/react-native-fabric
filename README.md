@@ -4,6 +4,7 @@ A React Native library for Fabric, Crashlytics and Answers
 This is a work in progress and has yet to be published to NPM 
 
 ## Crashlytics Usage
+To see all available methods take a look at [Crashlytics.js](https://github.com/corymsmith/react-native-fabric/blob/master/Crashlytics.js)
 
 ```js
 var Fabric = require('react-native-fabric');
@@ -26,12 +27,14 @@ Crashlytics.setString('organization', 'Acme. Corp');
 ```
 
 ## Answers Usage
+To see all available methods take a look at [Answers.js](https://github.com/corymsmith/react-native-fabric/blob/master/Answers.js)
 ```js
 var Fabric = require('react-native-fabric');
 
 var { Answers } = Fabric;
 Answers.logCustom('Performed a custom event', { bigData: true });
- 
+
+``` 
 
 
 ## Todo
