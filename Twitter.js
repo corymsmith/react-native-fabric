@@ -10,7 +10,7 @@ module.exports = {
   login: function (cb) {
     SMXTwitter.login(cb);
   },
-  logout: function () {
-    SMXTwitter.logout();
+  logOut: function () {
+    SMXTwitter.logOut();
   }
 };

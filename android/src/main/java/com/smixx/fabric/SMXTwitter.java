@@ -55,7 +55,7 @@ public class SMXTwitter extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void logout() {
+    public void logOut() {
         TwitterCore.getInstance().logOut();
     }
 
