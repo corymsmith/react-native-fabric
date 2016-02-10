@@ -16,6 +16,16 @@ RCT_EXPORT_METHOD(log:(NSString *)message)
   CLS_LOG(@"%@", message);
 }
 
+RCT_EXPORT_METHOD(crash)
+{
+  [[Crashlytics sharedInstance] crash];
+}
+
+RCT_EXPORT_METHOD(throwException)
+{
+  [[Crashlytics sharedInstance] throwException];
+}
+
 RCT_EXPORT_METHOD(setUserIdentifier:(NSString *)userIdentifier)
 {
   [[Crashlytics sharedInstance] setUserIdentifier:userIdentifier];
