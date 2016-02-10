@@ -8,6 +8,9 @@ var SMXCrashlytics = NativeModules.SMXCrashlytics;
 
 module.exports = {
 
+  crash: SMXCrashlytics.crash,
+  throwException: SMXCrashlytics.throwException,
+
   log: function (message:string) {
     SMXCrashlytics.log(message);
   },
