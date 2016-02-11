@@ -11,6 +11,33 @@ module.exports = {
   crash: SMXCrashlytics.crash,
   throwException: SMXCrashlytics.throwException,
 
+  recordError: function (error) {
+    var newError;
+
+    if (typeof error === "string" || error instanceof String) {
+      newError = {message: error};
+    }
+    else if (typeof error === "number") {
+      newError = {code: error};
+    }
+    else {
+      newError = {};
+
+      // Pass everything in as a string or number to be safe
+      for (var k in error) {
+        if (error.hasOwnProperty(k)) {
+          if ((typeof error[k] !== "number") && (typeof (error[k] !== "string")) && !(error[k] instanceof String)) {
+            newError[k] = JSON.stringify(error[k]);
+          }
+          else {
+            newError[k] = error[k]
+          }
+        }
+      }
+    }
+    SMXCrashlytics.recordError(newError);
+  },
+
   log: function (message:string) {
     SMXCrashlytics.log(message);
   },
