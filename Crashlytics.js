@@ -14,13 +14,18 @@ module.exports = {
   recordError: function (error) {
     var newError;
 
+    /**
+     * We need to be careful which data types we send to the native layer.
+     * Could do something much fancier here, e.g., deep, recursive serialization
+     * but keep it simple for now.
+     */
     if (typeof error === "string" || error instanceof String) {
       newError = {message: error};
     }
     else if (typeof error === "number") {
       newError = {code: error};
     }
-    else {
+    else if (typeof error === "Object") {
       newError = {};
 
       // Pass everything in as a string or number to be safe
@@ -33,6 +38,13 @@ module.exports = {
             newError[k] = error[k]
           }
         }
+      }
+    }
+    else {
+      // Array?
+      // Fall back on JSON
+      newError = {
+        json: JSON.stringify(error);
       }
     }
     SMXCrashlytics.recordError(newError);
