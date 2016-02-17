@@ -22,6 +22,11 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void crash() {
+        Crashlytics.getInstance().crash();
+    }
+
+    @ReactMethod
     public void log(String message) {
         Crashlytics.log(message);
     }
