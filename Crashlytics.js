@@ -44,7 +44,7 @@ module.exports = {
       // Array?
       // Fall back on JSON
       newError = {
-        json: JSON.stringify(error);
+        json: JSON.stringify(error)
       }
     }
     SMXCrashlytics.recordError(newError);
