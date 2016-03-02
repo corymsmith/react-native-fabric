@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D8D9DB961C6D049C009FBC0E /* SMXCrashlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9DB921C6D049C009FBC0E /* SMXCrashlytics.m */; };
-		D8D9DB971C6D049C009FBC0E /* SMXAnswers.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D9DB941C6D049C009FBC0E /* SMXAnswers.m */; };
+		D87A76C31C86A251004ABB23 /* SMXAnswers.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C01C86A251004ABB23 /* SMXAnswers.m */; };
+		D87A76C41C86A251004ABB23 /* SMXCrashlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C21C86A251004ABB23 /* SMXCrashlytics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,11 +24,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D87A76BF1C86A251004ABB23 /* SMXAnswers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXAnswers.h; path = SMXCrashlytics/SMXAnswers.h; sourceTree = "<group>"; };
+		D87A76C01C86A251004ABB23 /* SMXAnswers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMXAnswers.m; path = SMXCrashlytics/SMXAnswers.m; sourceTree = "<group>"; };
+		D87A76C11C86A251004ABB23 /* SMXCrashlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXCrashlytics.h; path = SMXCrashlytics/SMXCrashlytics.h; sourceTree = "<group>"; };
+		D87A76C21C86A251004ABB23 /* SMXCrashlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMXCrashlytics.m; path = SMXCrashlytics/SMXCrashlytics.m; sourceTree = "<group>"; };
 		D8D9DB831C6D03DB009FBC0E /* libSMXCrashlytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMXCrashlytics.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8D9DB921C6D049C009FBC0E /* SMXCrashlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMXCrashlytics.m; sourceTree = "<group>"; };
-		D8D9DB931C6D049C009FBC0E /* SMXAnswers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMXAnswers.h; sourceTree = "<group>"; };
-		D8D9DB941C6D049C009FBC0E /* SMXAnswers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMXAnswers.m; sourceTree = "<group>"; };
-		D8D9DB951C6D049C009FBC0E /* SMXCrashlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMXCrashlytics.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,10 +45,10 @@
 		D8D9DB5B1C6D01F4009FBC0E = {
 			isa = PBXGroup;
 			children = (
-				D8D9DB921C6D049C009FBC0E /* SMXCrashlytics.m */,
-				D8D9DB931C6D049C009FBC0E /* SMXAnswers.h */,
-				D8D9DB941C6D049C009FBC0E /* SMXAnswers.m */,
-				D8D9DB951C6D049C009FBC0E /* SMXCrashlytics.h */,
+				D87A76BF1C86A251004ABB23 /* SMXAnswers.h */,
+				D87A76C01C86A251004ABB23 /* SMXAnswers.m */,
+				D87A76C11C86A251004ABB23 /* SMXCrashlytics.h */,
+				D87A76C21C86A251004ABB23 /* SMXCrashlytics.m */,
 				D8D9DB661C6D01F4009FBC0E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,8 +117,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8D9DB971C6D049C009FBC0E /* SMXAnswers.m in Sources */,
-				D8D9DB961C6D049C009FBC0E /* SMXCrashlytics.m in Sources */,
+				D87A76C41C86A251004ABB23 /* SMXCrashlytics.m in Sources */,
+				D87A76C31C86A251004ABB23 /* SMXAnswers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +148,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../example/ios";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../example/ios",
+					"$(SRCROOT)/../../../ios",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -163,7 +166,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../example/node_modules/react-native/React/**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../example/node_modules/react-native/React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -197,7 +203,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../example/ios";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../example/ios",
+					"$(SRCROOT)/../../../ios",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -206,7 +215,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../example/node_modules/react-native/React/**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../example/node_modules/react-native/React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
