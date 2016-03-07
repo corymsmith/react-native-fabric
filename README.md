@@ -99,6 +99,8 @@ Crashlytics.setBool('has_posted', true);
 
 Crashlytics.setString('organization', 'Acme. Corp');
 
+// Forces a native crash for testing
+Crashlytics.crash();
 
 // Due to differences in primitive types between iOS and Android I've exposed a setNumber function vs. setInt, setFloat, setDouble, setLong, etc                                        
 Crashlytics.setNumber('post_count', 5);
