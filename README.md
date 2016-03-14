@@ -109,7 +109,6 @@ Crashlytics.setNumber('post_count', 5);
 To see all available function take a look at [Answers.js](https://github.com/corymsmith/react-native-fabric/blob/master/Answers.js)
 
   
-
 ```js
 var Fabric = require('react-native-fabric');
 
@@ -136,6 +135,24 @@ Answers.logPurchase(24.99,'USD',true, 'Air Jordans', 'shoes', '987654');
 ``` 
 
 
+#TODO
+- Twitter install instructions
+- Onactivityresult method
+- INstantiate package in main oncreate
+
+// declare package
+    private FabricPackage mFabricPackage;
+    
+.addPackage(mFabricPackage)
+    
+    
+ // handle onActivityResult
+    @Override
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        mFabricPackage.handleActivityResult(requestCode, resultCode, data);
+    }    
 
 ## License
 MIT © Cory Smith 2016
