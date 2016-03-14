@@ -1,6 +1,5 @@
 # react-native-fabric
-A React Native library for Fabric, Crashlytics and Answers`
-
+A React Native library for Fabric, Crashlytics and Answers
 
 ## Installation
 
@@ -10,8 +9,14 @@ A React Native library for Fabric, Crashlytics and Answers`
 
 ### iOS
  
-- Open your project in Xcode.
-- Drag the folder `ReactNativeFabric` from `/node_modules/react-native-fabric/ios` into the `Libraries` group in the Project navigator. Ensure that `Copy items if needed` is UNCHECKED!
+- Open your project in Xcode
+- Run ```open node_modules/react-native-fabric/ios```
+- Drag `SMXCrashlytics.xcodeproj` into your `Libraries` group
+- Select your main project in the navigator to bring up settings
+- Under `Build Phases` expand the `Link Binary With Libraries` header
+- Scroll down and click the `+` to add a library
+- Find and add `libSMXCrashlytics.a` under the `Workspace` group
+- ⌘+B
 
 ### Android
 
@@ -102,6 +107,9 @@ Crashlytics.setString('organization', 'Acme. Corp');
 // Forces a native crash for testing
 Crashlytics.crash();
 
+// Record a non-fatal JS error
+Crashlytics.recordError('something went wrong!');
+
 // Due to differences in primitive types between iOS and Android I've exposed a setNumber function vs. setInt, setFloat, setDouble, setLong, etc                                        
 Crashlytics.setNumber('post_count', 5);
 
@@ -109,8 +117,6 @@ Crashlytics.setNumber('post_count', 5);
 
 ## Answers Usage
 To see all available function take a look at [Answers.js](https://github.com/corymsmith/react-native-fabric/blob/master/Answers.js)
-
-  
 
 ```js
 var Fabric = require('react-native-fabric');
@@ -136,7 +142,6 @@ Answers.logPurchase(24.99,'USD',true, 'Air Jordans', 'shoes', '987654');
 
 
 ``` 
-
 
 
 ## License
