@@ -44,7 +44,7 @@ A React Native library for Fabric, Crashlytics and Answers
 
   dependencies {    
     compile 'com.android.support:appcompat-v7:23.0.0'
-    compile 'com.facebook.react:react-native:0.18.+'
+    compile 'com.facebook.react:react-native:0.19.+'
   + compile project(':react-native-fabric')
   }
   ```
