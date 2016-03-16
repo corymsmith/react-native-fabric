@@ -44,3 +44,4 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+.idea
