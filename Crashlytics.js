@@ -28,7 +28,7 @@ module.exports = {
     else if (typeof error === "number") {
       newError = {code: error};
     }
-    else if (typeof error === "Object") {
+    else if (typeof error === "object") {
       newError = {};
 
       // Pass everything in as a string or number to be safe
