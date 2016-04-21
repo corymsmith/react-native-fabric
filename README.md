@@ -94,9 +94,9 @@ A React Native library for Fabric, Crashlytics and Answers
 
 Make sure you also follow the steps described in [`Android`](#android).
 
-* Edit your `build.gradle` (note: **app** folder) to look like this.
+* Edit your `build.gradle` (note: **app** folder) to look like this:
 
-```
+  ```diff
   apply plugin: "com.android.application"
 
   + buildscript {
@@ -122,11 +122,11 @@ Make sure you also follow the steps described in [`Android`](#android).
   +         transitive = true;
   +     }
   }
-```
+  ```
 
 * Edit your `MainActivity.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
 
-```
+  ```diff
   + import android.os.Bundle;
   + import com.crashlytics.android.Crashlytics;
   + import io.fabric.sdk.android.Fabric;
@@ -142,12 +142,11 @@ Make sure you also follow the steps described in [`Android`](#android).
     [...]
 
   }
-
-```
+  ```
 
 * Edit your `AndroidManifest.xml` (in `android/app/src/main/`) to look like this. Make sure to enter your fabric API key after `android:value=`, you can find your key on your fabric organisation page.
 
-```
+  ```diff
   <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       [...]
       <application
@@ -159,7 +158,7 @@ Make sure you also follow the steps described in [`Android`](#android).
       </application>
   +   <uses-permission android:name="android.permission.INTERNET" />
   </manifest>
-```
+  ```
 
 ## Crashlytics Usage
 To see all available methods take a look at [Crashlytics.js](https://github.com/corymsmith/react-native-fabric/blob/master/Crashlytics.js)
