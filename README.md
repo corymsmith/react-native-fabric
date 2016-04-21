@@ -7,7 +7,7 @@ A React Native library for Fabric, Crashlytics and Answers
 
 - Set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io)
 
-- Alternatively if you don't use Android studio you also need to follow the steps described in 'Android without Android Studio' **as well as** the steps in 'Android'.
+- Alternatively if you don't use Android studio you also need to follow the steps described in [`Android without Android Studio`](#no_android_studio) **as well as** the steps in [`Android`](#android).
 
 ### iOS
  
@@ -20,6 +20,7 @@ A React Native library for Fabric, Crashlytics and Answers
 - Find and add `libSMXCrashlytics.a` under the `Workspace` group
 - ⌘+B
 
+<a name="android"></a>
 ### Android
 
 *Note: Android support requires React Native 0.16 or later 
@@ -88,9 +89,10 @@ A React Native library for Fabric, Crashlytics and Answers
   }
   ```
 
+<a name="no_android_studio"></a>
 ### Android without Android Studio
 
-Make sure you also follow the steps described in the previous section 'Android'.
+Make sure you also follow the steps described in [`Android`](#android).
 
 * Edit your `build.gradle` (note: **app** folder) to look like this.
 
