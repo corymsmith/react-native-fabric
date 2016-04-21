@@ -7,7 +7,7 @@ A React Native library for Fabric, Crashlytics and Answers
 
 - Set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io)
 
-- Alternatively if you don't use Android studio you also need to follow the steps described in [`Android without Android Studio`](#no_android_studio) **as well as** the steps in [`Android`](#android).
+- Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
 ### iOS
  
@@ -60,32 +60,14 @@ A React Native library for Fabric, Crashlytics and Answers
   + import com.smixx.fabric.FabricPackage;
 
   ....
-
-  public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
-
-    private ReactInstanceManager mReactInstanceManager;
-    private ReactRootView mReactRootView;
-
+  public class MainActivity extends ReactActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      mReactRootView = new ReactRootView(this);
-
-      mReactInstanceManager = ReactInstanceManager.builder()
-        .setApplication(getApplication())
-        .setBundleAssetName("index.android.bundle")
-        .setJSMainModuleName("index.android")
-        .addPackage(new MainReactPackage())
-  +     .addPackage(new FabricPackage(this))
-        .setUseDeveloperSupport(BuildConfig.DEBUG)
-        .setInitialLifecycleState(LifecycleState.RESUMED)
-        .build();
-
-      mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
-
-      setContentView(mReactRootView);
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+  +         new FabricPackage(this),
+            new MainReactPackage()
+        );
     }
-    ...
   }
   ```
 
