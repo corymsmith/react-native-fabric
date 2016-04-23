@@ -53,6 +53,10 @@ module.exports = {
     SMXCrashlytics.recordError(newError);
   },
 
+  logException: function (value:string) {
+    SMXCrashlytics.logException(value);
+  },
+
   log: function (message:string) {
     SMXCrashlytics.log(message);
   },
