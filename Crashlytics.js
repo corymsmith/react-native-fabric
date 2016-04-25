@@ -83,5 +83,9 @@ module.exports = {
 
   setString: function (key:string, value:string) {
     SMXCrashlytics.setString(key, value);
+  },
+
+  recordCustomExceptionName: function(name:string, reason:string, frameArray:Array<Object>) {
+    SMXCrashlytics.recordCustomExceptionName(name, reason, frameArray);
   }
 };

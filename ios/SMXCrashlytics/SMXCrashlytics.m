@@ -83,6 +83,22 @@ RCT_EXPORT_METHOD(setNumber:(NSString *)key value:(nonnull NSNumber *)numberValu
   }
 }
 
+RCT_EXPORT_METHOD(recordCustomExceptionName:(nonnull NSString *)name reason:(NSNumber *)reason frameArray:(nonnull NSArray *)frameArray)
+{
+  NSMutableArray *clsFrames = [[NSMutableArray alloc] init];
+  if(frameArray) {
+    for (NSDictionary *dict in frameArray) {
+      CLSStackFrame *frame = [CLSStackFrame stackFrame];
+      [frame setFileName: dict[@"fileName"]];
+      [frame setLineNumber: dict[@"lineNumber"]];
+      [frame setOffset: dict[@"columnNumber"]];
+      [frame setSymbol: dict[@"functionName"]];
+      [clsFrames addObject: frame];
+    }
+    [[Crashlytics sharedInstance] recordCustomExceptionName:name reason:reason frameArray:clsFrames];
+  }
+}
+
 // These functions are borrowed from https://github.com/joecannatti/Objective-C-Koans
 BOOL KWObjCTypeIsFloatingPoint(const char *objCType) {
   return strcmp(objCType, @encode(float)) == 0 || strcmp(objCType, @encode(double)) == 0;
