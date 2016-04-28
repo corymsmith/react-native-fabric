@@ -14,6 +14,6 @@ module.exports = {
     SMXTwitter.logOut();
   },
   composeTweet: function (options, cb) {
-    SMXTwitter.sharePost(options, cb);
+    SMXTwitter.composeTweet(options, cb);
   }
 };
