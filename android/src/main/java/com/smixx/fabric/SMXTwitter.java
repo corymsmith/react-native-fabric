@@ -7,12 +7,14 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 public class SMXTwitter extends ReactContextBaseJavaModule {
@@ -55,11 +57,34 @@ public class SMXTwitter extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void composeTweet(ReadableMap options, Callback callback) {
+        String text = "";
+
+        if (hasValidKey("text", options)) {
+            text = options.getString("text");
+        }
+
+        try {
+            TweetComposer.Builder builder = new TweetComposer.Builder(this.activity)
+                .text(text);
+
+            builder.show();
+            callback.invoke("OK");
+        } catch (Exception e) {
+            callback.invoke("error");
+        }
+    }
+
+    @ReactMethod
     public void logOut() {
         TwitterCore.getInstance().logOut();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         loginButton.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private boolean hasValidKey(String key, ReadableMap options) {
+        return options.hasKey(key) && !options.isNull(key);
     }
 }
