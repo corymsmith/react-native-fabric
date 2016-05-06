@@ -83,7 +83,7 @@ RCT_EXPORT_METHOD(setNumber:(NSString *)key value:(nonnull NSNumber *)numberValu
   }
 }
 
-RCT_EXPORT_METHOD(recordCustomExceptionName:(nonnull NSString *)name reason:(NSNumber *)reason frameArray:(nonnull NSArray *)frameArray)
+RCT_EXPORT_METHOD(recordCustomExceptionName:(nonnull NSString *)name reason:(NSString *)reason frameArray:(nonnull NSArray *)frameArray)
 {
   NSMutableArray *clsFrames = [[NSMutableArray alloc] init];
   if(frameArray) {
