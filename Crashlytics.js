@@ -23,7 +23,7 @@ module.exports = {
     var newError;
 
     if (typeof error === "string" || error instanceof String) {
-      newError = {message: error};
+      newError = {domain: error};
     }
     else if (typeof error === "number") {
       newError = {code: error};
