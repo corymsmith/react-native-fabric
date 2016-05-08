@@ -1,7 +1,7 @@
 # react-native-fabric
 A React Native library for Fabric, Crashlytics and Answers
 
-[![NPM](https://nodei.co/npm/react-native-fabric.png)](https://nodei.co/npm/react-native-fabric/)
+[![NPM](https://nodei.co/npm/react-native-fabric.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-fabric/)
 
 ## Installation
 
