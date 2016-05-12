@@ -81,7 +81,9 @@ public class SMXTwitter extends ReactContextBaseJavaModule {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        loginButton.onActivityResult(requestCode, resultCode, data);
+        if (loginButton != null) {
+            loginButton.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     private boolean hasValidKey(String key, ReadableMap options) {
