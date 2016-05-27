@@ -4,7 +4,7 @@
 @implementation SMXCrashlytics
 @synthesize bridge = _bridge;
 
-NSString *const DefaultDomain = @"com.lockehart.lib.SMXCrashlytics";
+NSString *const DefaultDomain = @"com.smixx.fabric.SMXCrashlytics";
 NSInteger *const DefaultCode = 100;
 
 RCT_EXPORT_MODULE();

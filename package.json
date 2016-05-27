@@ -1,6 +1,6 @@
 {
   "name": "react-native-fabric",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A React Native library for Fabric, Crashlytics and Answers",
   "main": "index",
   "scripts": {
