@@ -10,12 +10,19 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.google.gson.Gson;
+import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.core.TwitterApiClient;
+import com.twitter.sdk.android.core.models.User;
+import retrofit.RetrofitError;
+import retrofit.http.GET;
+import retrofit.http.Query;
 
 public class SMXTwitter extends ReactContextBaseJavaModule {
     public Activity activity;
@@ -55,6 +62,32 @@ public class SMXTwitter extends ReactContextBaseJavaModule {
 
         loginButton.performClick();
     }
+
+    @ReactMethod
+        public void fetchProfile(final Callback callback) {
+
+            try {
+                ReactNativeFabricApiClient client = new ReactNativeFabricApiClient(Twitter.getSessionManager().getActiveSession());
+                client.getCustomService().show(Twitter.getSessionManager().getActiveSession().getUserId(), new com.twitter.sdk.android.core.Callback<User>() {
+                    @Override
+                    public void success(Result<User> result) {
+                        Gson gson = new Gson();
+                        WritableMap map = gson.fromJson(gson.toJson(result), WritableMap.class);
+                        Log.d("TESTS", map.toString());
+                        callback.invoke(null, map);
+                    }
+
+                    @Override
+                    public void failure(TwitterException exception) {
+                        exception.printStackTrace();
+                        Twitter.getSessionManager().clearActiveSession();
+                        callback.invoke(exception.getMessage());
+                    }
+                });
+            } catch (Exception ex) {
+                callback.invoke(ex.getMessage());
+            }
+        }
 
     @ReactMethod
     public void composeTweet(ReadableMap options, Callback callback) {

@@ -139,13 +139,11 @@ android {
 }
 
 dependencies {
+    compile "com.android.support:appcompat-v7:23.3.0"
+    compile "com.facebook.react:react-native:+"
 
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true
     }
-
-    compile "com.android.support:appcompat-v7:23.3.0"
-    compile "com.facebook.react:react-native:+"
-
     compile project(':react-native-fabric')
 }
