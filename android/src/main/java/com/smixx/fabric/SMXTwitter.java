@@ -73,7 +73,6 @@ public class SMXTwitter extends ReactContextBaseJavaModule {
                     public void success(Result<User> result) {
                         Gson gson = new Gson();
                         WritableMap map = gson.fromJson(gson.toJson(result), WritableMap.class);
-                        Log.d("TESTS", map.toString());
                         callback.invoke(null, map);
                     }
 
