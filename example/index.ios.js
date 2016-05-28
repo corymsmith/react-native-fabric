@@ -93,12 +93,14 @@ apply@[native code]`,
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.background} source={{uri: this.state.user.profile_background_image_url}}/>
-        {this.state.user && <View style={{alignItems: 'center', justifyContent: 'center'}}>
-          <Image style={styles.avatar} source={{uri: this.state.user.profile_image_url}}/>
-          <Text style={styles.username}>{this.state.user.screen_name}</Text>
-          <Text style={styles.name}>{this.state.user.name}</Text>
-          <Text style={styles.description}>{this.state.user.description}</Text>
+        {this.state.user && <View>
+          <Image style={styles.background} source={{uri: this.state.user.profile_background_image_url}}/>
+          <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <Image style={styles.avatar} source={{uri: this.state.user.profile_image_url}}/>
+            <Text style={styles.username}>{this.state.user.screen_name}</Text>
+            <Text style={styles.name}>{this.state.user.name}</Text>
+            <Text style={styles.description}>{this.state.user.description}</Text>
+          </View>
         </View>
         }
         {this.state.user && <Text style={styles.logoutButton}
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
 
   },
 
-  avatar :{
+  avatar: {
     width: 50,
     height: 50,
     borderRadius: 25
