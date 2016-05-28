@@ -1,0 +1,81 @@
+/* Label for button to bring up share dialog to share this Tweet in a single Tweet view */
+"tw__share_tweet" = "Share Tweet";
+/* Subject format used to prefill certain sharing options such as Email includes full name (%1$@) and screenname (%2$@) */
+"tw__share_tweet_subject_format" = "Tweet from %1$@ (@%2$@)";
+/* Generic share text format used in all sharing options includes screenname (%1$@) and URL to the Tweet (%2$@) */
+"tw__share_tweet_generic_template_format" = "Check out @%1$@\'s Tweet: %2$@";
+/* Label for Sign in with Twitter button */
+"tw__sign_in_with_twitter_button" = "Log in with Twitter";
+/* Detail message that includes the app name and username on the share your email screen */
+"tw__email_share_detail_message_format" = "Get updates and other information from %@ when you allow them access to your email on your Twitter account @%@.";
+/* Label for attributing this Tweet was retweeted by the user %@ */
+"tw__tweet_retweeted_by_user" = "Retweeted by %@";
+/* Label for the Install button within the app promo card preview of the Tweet composer */
+"tw__card_composer_install_button" = "Install";
+/* Label for the post tweet button in the compose view */
+"tw__card_composer_tweet" = "Tweet";
+/* Label for the App Store subtitle on the card install preview */
+"tw__card_composer_app_store" = "App Store";
+/* Placeholder text for the composer */
+"tw__composer_placeholder_text" = "What's Happening?";
+/* Label to explain this view contains sponsored ads. This is also spoken out with VoiceOver when an ad is shown. */
+"tw__view_is_sponsored_ad" = "This is a sponsored ad";
+
+/* Timestamps */
+
+/* Really short abbreviation for days (plural). 5 days would be '5d' */
+"TIME_SHORT_DAYS_FORMAT" = "%dd";
+/* Really short abbreviation for day (singular). 1 day would be '1d' */
+"TIME_SHORT_DAY_FORMAT" = "%dd";
+/* Really short abbreviation for hours (plural). 5 hours would be '5h' */
+"TIME_SHORT_HOURS_FORMAT" = "%dh";
+/* Really short abbreviation for hour (singular). 1 hour would be '1h' */
+"TIME_SHORT_HOUR_FORMAT" = "%dh";
+/* Really short abbreviation for minutes (plural). 5 minutes would be '5m' */
+"TIME_SHORT_MINUTES_FORMAT" = "%dm";
+/* Really short abbreviation for minute (singular). 1 minute would be '1m' */
+"TIME_SHORT_MINUTE_FORMAT" = "%dm";
+/* Really short abbreviation for seconds (plural). 5 seconds would be '5s' */
+"TIME_SHORT_SECONDS_FORMAT" = "%ds";
+/* Really short abbreviation for second (singular). '1s' */
+"TIME_SHORT_SECOND_FORMAT" = "%ds";
+
+/* Accessibility Labels */
+
+/* Text spoken out with VoiceOver when a tweet has an image thumbnail showing */
+"tw__single_image" = "Image Attachment";
+/* Text spoken out with VoiceOver when a tweet has a video thumbnail showing */
+"tw__video_thumbnail" = "Video Attachment";
+/* Text spoken out with VoiceOver for selecting the profile image on a regular tweet view */
+"tw__tweet_profile_accessibility" = "Profile";
+/* Text spoken out with VoiceOver for selecting the attached image on a regular tweet view */
+"tw__tweet_image_accessibility" = "Attachment";
+/* Text spoken out with VoiceOver for the content image of the card composer preview */
+"tw__user_content_image" = "App Preview";
+/* Text spoken out with VoiceOver for the Install button preview in card composer previews */
+"tw__card_compose_install_preview" = "Preview of install button for %@";
+/* Text spoken as VoiceOver hint for Tweet button in the card composer bottom bar */
+"tw__card_compose_tweet_hint" = "Double-tap to post this Tweet";
+/* Text spoken out with VoiceOver for the remaining character count in composer bottom bar */
+"tw__card_compose_character_count" = "%td characters remaining";
+/* Text spoken out with VoiceOver for the profile image in the composer top bar */
+"tw__card_compose_profile_image" = "%@'s profile";
+/* Text spoken out with VoiceOver for the close button in the card composer top bar */
+"tw__card_compose_close_button" = "Close";
+/* Text spoken out as VoiceOver hint for the close button in the card composer top bar */
+"tw__card_compose_close_hint" = "Double-tap to dismiss the composer.";
+/* VoiceOver label for Done button on image viewer */
+"tw__image_viewer_done_button" = "Done";
+/* VoiceOver label for Like button */
+"tw__tweet_like_button" = "Like";
+/* VoiceOver value for Like button on Tweet that has been liked */
+"tw__tweet_liked_state" = "Liked";
+/* VoiceOver value for Like button on Tweet that has not yet been liked */
+"tw__tweet_not_liked_state" = "Not Liked";
+/* VoiceOver label for Share button */
+"tw__tweet_share_button" = "Share";
+/* VoiceOver for privacy button to bring up the privacy page URL for ads */
+"tw__privacy_information_button" = "Privacy information";
+
+/* Test String (just for unit tests) */
+"tw__test_string" = "Test";

@@ -1,0 +1,21 @@
+framework module TwitterCore {
+    umbrella header "TwitterCore.h"
+    
+    export *
+    module * { export * }
+
+    link framework "Accounts"
+    link framework "CoreData"
+    link framework "Social"
+
+    header "TwitterCore.h"
+    header "TWTRAPIErrorCode.h"
+    header "TWTRAuthConfig.h"
+    header "TWTRAuthSession.h"
+    header "TWTRConstants.h"
+    header "TWTRCoreOAuthSigning.h"
+    header "TWTRDefines.h"
+    header "TWTRGuestSession.h"
+    header "TWTRSession.h"
+    header "TWTRSessionStore.h"
+}

@@ -11,19 +11,29 @@ import React, {
   View
 } from 'react-native';
 
+import {Crashlytics, Twitter} from 'react-native-fabric'
+
 class example extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+        <Text style={styles.button} onPress={ e => {
+                   Twitter.login((e, result) => {
+                     console.log(e);
+                     console.log(result);
+                   });
+        }}>
+          Login to Twitter
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
+        <Text style={styles.button} onPress={ e => {
+                   Twitter.fetchProfile((e, result) => {
+                     console.log(e);
+                     console.log(result);
+                   });
+        }}>
+          Fetch Profile
         </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
+
       </View>
     );
   }
@@ -36,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
+  button: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,

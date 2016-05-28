@@ -11,7 +11,7 @@ import React, {
   View
 } from 'react-native';
 
-import { Crashlytics } from 'react-native-fabric'
+import {Crashlytics, Twitter} from 'react-native-fabric'
 
 class example extends Component {
   onPress() {
@@ -72,6 +72,19 @@ apply@[native code]`,
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        <Text onPress={ e => {
+                   Twitter.login((e, result) => {
+                     console.log(e);
+                     console.log(result);
+                   });
+        }}>Twitter</Text>
+
+        <Text onPress={ e => {
+                   Twitter.fetchProfile((e, result) => {
+                     console.log(e);
+                     console.log(result);
+                   });
+        }}>Twitter</Text>
       </View>
     );
   }

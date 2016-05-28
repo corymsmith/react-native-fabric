@@ -1,0 +1,36 @@
+framework module TwitterKit {
+    umbrella header "TwitterKit.h"
+
+    export *
+    module * { export * }
+
+    link framework "AVFoundation"
+    link framework "CoreMedia"
+    
+    header "Twitter.h"
+    header "TwitterKit.h"
+    header "TWTRAPIClient.h"
+    header "TWTRCardConfiguration.h"
+    header "TWTRCollectionTimelineDataSource.h"
+    header "TWTRComposer.h"
+    header "TWTRComposerTheme.h"
+    header "TWTRComposerViewController.h"
+    header "TWTRJSONConvertible.h"
+    header "TWTRListTimelineDataSource.h"
+    header "TWTRLogInButton.h"
+    header "TWTRMoPubAdConfiguration.h"
+    header "TWTRMoPubNativeAdContainerView.h"
+    header "TWTRNotificationConstants.h"
+    header "TWTROAuthSigning.h"
+    header "TWTRSearchTimelineDataSource.h"
+    header "TWTRTimelineDataSource.h"
+    header "TWTRTimelineType.h"
+    header "TWTRTimelineViewController.h"
+    header "TWTRTweet.h"
+    header "TWTRTweetDetailViewController.h"
+    header "TWTRTweetTableViewCell.h"
+    header "TWTRTweetView.h"
+    header "TWTRTweetViewDelegate.h"
+    header "TWTRUser.h"
+    header "TWTRUserTimelineDataSource.h"
+}

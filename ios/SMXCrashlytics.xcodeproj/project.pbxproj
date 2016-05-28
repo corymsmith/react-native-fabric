@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F925C381CF9008B00535D56 /* SMXTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F925C371CF9008B00535D56 /* SMXTwitter.m */; };
 		D87A76C31C86A251004ABB23 /* SMXAnswers.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C01C86A251004ABB23 /* SMXAnswers.m */; };
 		D87A76C41C86A251004ABB23 /* SMXCrashlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C21C86A251004ABB23 /* SMXCrashlytics.m */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F925C361CF9008B00535D56 /* SMXTwitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXTwitter.h; path = ReactNativeFabric/SMXTwitter.h; sourceTree = "<group>"; };
+		2F925C371CF9008B00535D56 /* SMXTwitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMXTwitter.m; path = ReactNativeFabric/SMXTwitter.m; sourceTree = "<group>"; };
 		D87A76BF1C86A251004ABB23 /* SMXAnswers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXAnswers.h; path = SMXCrashlytics/SMXAnswers.h; sourceTree = "<group>"; };
 		D87A76C01C86A251004ABB23 /* SMXAnswers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMXAnswers.m; path = SMXCrashlytics/SMXAnswers.m; sourceTree = "<group>"; };
 		D87A76C11C86A251004ABB23 /* SMXCrashlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXCrashlytics.h; path = SMXCrashlytics/SMXCrashlytics.h; sourceTree = "<group>"; };
@@ -45,6 +48,8 @@
 		D8D9DB5B1C6D01F4009FBC0E = {
 			isa = PBXGroup;
 			children = (
+				2F925C361CF9008B00535D56 /* SMXTwitter.h */,
+				2F925C371CF9008B00535D56 /* SMXTwitter.m */,
 				D87A76BF1C86A251004ABB23 /* SMXAnswers.h */,
 				D87A76C01C86A251004ABB23 /* SMXAnswers.m */,
 				D87A76C11C86A251004ABB23 /* SMXCrashlytics.h */,
@@ -118,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87A76C41C86A251004ABB23 /* SMXCrashlytics.m in Sources */,
+				2F925C381CF9008B00535D56 /* SMXTwitter.m in Sources */,
 				D87A76C31C86A251004ABB23 /* SMXAnswers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

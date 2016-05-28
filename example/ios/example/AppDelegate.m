@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <TwitterKit/TwitterKit.h>
 
 #import "RCTRootView.h"
 
@@ -54,7 +55,7 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
-  [Fabric with:@[[Crashlytics class]]];
+  [Fabric with:@[[Crashlytics class], [Twitter class]]];
   
   return YES;
 }
