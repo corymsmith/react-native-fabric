@@ -122,4 +122,25 @@ public class SMXTwitter extends ReactContextBaseJavaModule {
     private boolean hasValidKey(String key, ReadableMap options) {
         return options.hasKey(key) && !options.isNull(key);
     }
+
+
+
+    class ReactNativeFabricApiClient extends TwitterApiClient {
+            public ReactNativeFabricApiClient(TwitterSession session) {
+                super(session);
+            }
+
+            /**
+             * Provide CustomService with defined endpoints
+             */
+            public CustomService getCustomService() {
+                return getService(CustomService.class);
+            }
+        }
+
+        // example users/show service endpoint
+        interface CustomService {
+            @GET("/1.1/users/show.json")
+            void show(@Query("user_id") long id, com.twitter.sdk.android.core.Callback<User> cb);
+        }
 }
