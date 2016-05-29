@@ -7,6 +7,8 @@ import com.crashlytics.android.Crashlytics;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
 
 public class SMXCrashlytics extends ReactContextBaseJavaModule {
     public Activity activity;
@@ -19,6 +21,16 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
     @Override
     public String getName() {
         return "SMXCrashlytics";
+    }
+
+    @ReactMethod
+    public void crash() {
+        Crashlytics.getInstance().crash();
+    }
+
+    @ReactMethod
+    public void logException(String value) {
+        Crashlytics.logException(new RuntimeException(value));
     }
 
     @ReactMethod
@@ -68,6 +80,20 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
             Log.e("RNFabric:", ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    @ReactMethod
+    public void recordCustomExceptionName(String name, String reason, ReadableArray frameArray) {
+        StackTraceElement[] stackTrace = new StackTraceElement[frameArray.size()];
+        for (int i = 0; i < frameArray.size(); i++) {
+            ReadableMap map = frameArray.getMap(i);
+            String functionName = map.hasKey("functionName") ? map.getString("functionName") : "Unknown Function";
+            StackTraceElement stack = new StackTraceElement("", functionName, map.getString("fileName"), map.getInt("lineNumber"));
+            stackTrace[i] = stack;
+        }
+        Exception e = new Exception();
+        e.setStackTrace(stackTrace);
+        Crashlytics.logException(e);
     }
 
     private static Number parse(String str) {

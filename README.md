@@ -1,6 +1,7 @@
 # react-native-fabric
-A React Native library for Fabric, Crashlytics and Answers`
+A React Native library for Fabric, Crashlytics and Answers
 
+[![NPM](https://nodei.co/npm/react-native-fabric.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-fabric/)
 
 ## Installation
 
@@ -8,14 +9,23 @@ A React Native library for Fabric, Crashlytics and Answers`
 
 - Set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io)
 
-### iOS
- 
-- Open your project in Xcode.
-- Drag the folder `ReactNativeFabric` from `/node_modules/react-native-fabric/ios` into the `Libraries` group in the Project navigator. Ensure that `Copy items if needed` is UNCHECKED!
+- Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
+### iOS
+
+- Open your project in Xcode
+- Run ```open node_modules/react-native-fabric/ios```
+- Drag `SMXCrashlytics.xcodeproj` into your `Libraries` group
+- Select your main project in the navigator to bring up settings
+- Under `Build Phases` expand the `Link Binary With Libraries` header
+- Scroll down and click the `+` to add a library
+- Find and add `libSMXCrashlytics.a` under the `Workspace` group
+- ⌘+B
+
+<a name="android"></a>
 ### Android
 
-*Note: Android support requires React Native 0.16 or later 
+*Note: Android support requires React Native 0.16 or later
 
 * Edit `android/settings.gradle` to look like this (without the +):
 
@@ -28,7 +38,7 @@ A React Native library for Fabric, Crashlytics and Answers`
   + project(':react-native-fabric').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fabric/android')
   ```
 
-* Edit `android/app/build.gradle` (note: **app** folder) to look like this: 
+* Edit `android/app/build.gradle` (note: **app** folder) to look like this:
 
   ```diff
   apply plugin: 'com.android.application'
@@ -37,9 +47,9 @@ A React Native library for Fabric, Crashlytics and Answers`
     ...
   }
 
-  dependencies {    
+  dependencies {
     compile 'com.android.support:appcompat-v7:23.0.0'
-    compile 'com.facebook.react:react-native:0.18.+'
+    compile 'com.facebook.react:react-native:0.19.+'
   + compile project(':react-native-fabric')
   }
   ```
@@ -52,33 +62,86 @@ A React Native library for Fabric, Crashlytics and Answers`
   + import com.smixx.fabric.FabricPackage;
 
   ....
-
-  public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
-
-    private ReactInstanceManager mReactInstanceManager;
-    private ReactRootView mReactRootView;
-
+  public class MainActivity extends ReactActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-      mReactRootView = new ReactRootView(this);
-
-      mReactInstanceManager = ReactInstanceManager.builder()
-        .setApplication(getApplication())
-        .setBundleAssetName("index.android.bundle")
-        .setJSMainModuleName("index.android")
-        .addPackage(new MainReactPackage())
-  +     .addPackage(new FabricPackage(this))
-        .setUseDeveloperSupport(BuildConfig.DEBUG)
-        .setInitialLifecycleState(LifecycleState.RESUMED)
-        .build();
-
-      mReactRootView.startReactApplication(mReactInstanceManager, "MyApp", null);
-
-      setContentView(mReactRootView);
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+  +         new FabricPackage(this),
+            new MainReactPackage()
+        );
     }
-    ...
   }
+  ```
+
+<a name="no_android_studio"></a>
+### Android without Android Studio
+
+Make sure you also follow the steps described in [`Android`](#android).
+
+* Edit your `build.gradle` (note: **app** folder) to look like this:
+
+  ```diff
+  apply plugin: "com.android.application"
+
+  + buildscript {
+  +   repositories {
+  +     maven { url 'https://maven.fabric.io/public' }
+  +   }
+  +   dependencies {
+  +     // The Fabric Gradle plugin uses an open ended version to react
+  +     // quickly to Android tooling updates
+  +     classpath 'io.fabric.tools:gradle:1.+'
+  +   }
+  + }
+  + apply plugin: 'io.fabric'
+  + repositories {
+  +   maven { url 'https://maven.fabric.io/public' }
+  + }
+
+  [...]
+
+  dependencies {
+      [...]
+  +     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+  +         transitive = true;
+  +     }
+  }
+  ```
+
+* Edit your `MainActivity.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
+
+  ```diff
+  + import android.os.Bundle;
+  + import com.crashlytics.android.Crashlytics;
+  + import io.fabric.sdk.android.Fabric;
+
+  public class MainActivity extends ReactActivity {
+
+  +   @Override
+  +   protected void onCreate(Bundle savedInstanceState) {
+  +       super.onCreate(savedInstanceState);
+  +       Fabric.with(this, new Crashlytics());
+  +   }
+
+    [...]
+
+  }
+  ```
+
+* Edit your `AndroidManifest.xml` (in `android/app/src/main/`) to look like this. Make sure to enter your fabric API key after `android:value=`, you can find your key on your fabric organisation page.
+
+  ```diff
+  <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      [...]
+      <application
+        [...]
+  +       <meta-data
+  +         android:name="io.fabric.ApiKey"
+  +         android:value=[YOUR API KEY]
+  +       />
+      </application>
+  +   <uses-permission android:name="android.permission.INTERNET" />
+  </manifest>
   ```
 
 ## Crashlytics Usage
@@ -99,16 +162,23 @@ Crashlytics.setBool('has_posted', true);
 
 Crashlytics.setString('organization', 'Acme. Corp');
 
+// Forces a native crash for testing
+Crashlytics.crash();
 
-// Due to differences in primitive types between iOS and Android I've exposed a setNumber function vs. setInt, setFloat, setDouble, setLong, etc                                        
+// Record a non-fatal JS error
+Crashlytics.recordError('something went wrong!');
+
+// Due to differences in primitive types between iOS and Android I've exposed a setNumber function vs. setInt, setFloat, setDouble, setLong, etc
 Crashlytics.setNumber('post_count', 5);
+
+// Record a non-fatal JS error on Android
+Crashlytics.logException('');
 
 ```
 
 ## Answers Usage
 To see all available function take a look at [Answers.js](https://github.com/corymsmith/react-native-fabric/blob/master/Answers.js)
 
-  
 ```js
 var Fabric = require('react-native-fabric');
 
@@ -132,27 +202,8 @@ Answers.logSignUp('Twitter', true);
 Answers.logPurchase(24.99,'USD',true, 'Air Jordans', 'shoes', '987654');
 
 
-``` 
+```
 
-
-#TODO
-- Twitter install instructions
-- Onactivityresult method
-- INstantiate package in main oncreate
-
-// declare package
-    private FabricPackage mFabricPackage;
-    
-.addPackage(mFabricPackage)
-    
-    
- // handle onActivityResult
-    @Override
-    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        mFabricPackage.handleActivityResult(requestCode, resultCode, data);
-    }    
 
 ## License
 MIT © Cory Smith 2016
