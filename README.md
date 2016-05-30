@@ -12,7 +12,7 @@ A React Native library for Fabric, Crashlytics and Answers
 - Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
 ### iOS
- 
+
 - Open your project in Xcode
 - Run ```open node_modules/react-native-fabric/ios```
 - Drag `SMXCrashlytics.xcodeproj` into your `Libraries` group
@@ -25,7 +25,7 @@ A React Native library for Fabric, Crashlytics and Answers
 <a name="android"></a>
 ### Android
 
-*Note: Android support requires React Native 0.16 or later 
+*Note: Android support requires React Native 0.16 or later
 
 * Edit `android/settings.gradle` to look like this (without the +):
 
@@ -38,7 +38,7 @@ A React Native library for Fabric, Crashlytics and Answers
   + project(':react-native-fabric').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fabric/android')
   ```
 
-* Edit `android/app/build.gradle` (note: **app** folder) to look like this: 
+* Edit `android/app/build.gradle` (note: **app** folder) to look like this:
 
   ```diff
   apply plugin: 'com.android.application'
@@ -47,7 +47,7 @@ A React Native library for Fabric, Crashlytics and Answers
     ...
   }
 
-  dependencies {    
+  dependencies {
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.facebook.react:react-native:0.19.+'
   + compile project(':react-native-fabric')
@@ -168,7 +168,7 @@ Crashlytics.crash();
 // Record a non-fatal JS error
 Crashlytics.recordError('something went wrong!');
 
-// Due to differences in primitive types between iOS and Android I've exposed a setNumber function vs. setInt, setFloat, setDouble, setLong, etc                                        
+// Due to differences in primitive types between iOS and Android I've exposed a setNumber function vs. setInt, setFloat, setDouble, setLong, etc
 Crashlytics.setNumber('post_count', 5);
 
 // Record a non-fatal JS error on Android
@@ -202,7 +202,7 @@ Answers.logSignUp('Twitter', true);
 Answers.logPurchase(24.99,'USD',true, 'Air Jordans', 'shoes', '987654');
 
 
-``` 
+```
 
 
 ## License

@@ -1,6 +1,8 @@
 package com.smixx.fabric;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -17,6 +19,7 @@ public class FabricPackage implements ReactPackage {
     public FabricPackage(Activity activity) {
         mActivity = activity;
     }
+    private SMXTwitter mTwitterModuleInstance;
 
     @Override
     public List<NativeModule> createNativeModules(
@@ -24,6 +27,16 @@ public class FabricPackage implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
         modules.add(new SMXCrashlytics(reactContext, mActivity));
         modules.add(new SMXAnswers(reactContext, mActivity));
+
+        try {
+            Class cls = Class.forName("com.twitter.sdk.android.core.TwitterCore");
+            mTwitterModuleInstance = new SMXTwitter(reactContext, mActivity);
+            modules.add(mTwitterModuleInstance);
+            Log.d("FabricPackage", "Added SMXTwitter");
+        } catch (ClassNotFoundException e) {
+            Log.d("FabricPackage", "TwitterKit is not available.");
+        }
+
         return modules;
     }
 
@@ -35,5 +48,13 @@ public class FabricPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return new ArrayList<>();
+    }
+
+    public void handleActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        if (mTwitterModuleInstance == null) {
+            return;
+        }
+
+        mTwitterModuleInstance.onActivityResult(requestCode, resultCode, data);
     }
 }
