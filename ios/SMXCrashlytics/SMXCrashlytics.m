@@ -19,23 +19,6 @@ RCT_EXPORT_METHOD(log:(NSString *)message)
   CLS_LOG(@"%@", message);
 }
 
-RCT_EXPORT_METHOD(recordError:(NSDictionary *)error)
-{
-    NSInteger *code;
-    NSString *domain;
-    if ([error objectForKey:@"code"])
-        code = [error[@"code"] intValue];
-    else
-        code = DefaultCode;
-    if ([error objectForKey:@"domain"])
-        domain = [error valueForKey:@"domain"];
-    else
-        domain = DefaultDomain;
-
-    NSError *error2 = [NSError errorWithDomain:domain code:code userInfo:error];
-    [[Crashlytics sharedInstance] recordError:error2];
-}
-
 RCT_EXPORT_METHOD(crash)
 {
   [[Crashlytics sharedInstance] crash];
