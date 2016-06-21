@@ -3,6 +3,11 @@
   "version": "0.2.2",
   "description": "A React Native library for Fabric, Crashlytics and Answers",
   "main": "index",
+  "rnpm": {
+    "android": {
+      "packageInstance": "new FabricPackage(this)"
+    }
+  },
   "scripts": {
     "test": "flow"
   },
