@@ -5,14 +5,24 @@ A React Native library for Fabric, Crashlytics and Answers
 
 ## Installation
 
-`npm install react-native-fabric`
-
 - Set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io)
+
+### With [rnpm][rnpm]
+
+`rnpm install react-native-fabric`
+
+rnpm will automatically link all the necessary libraries for both iOS and Android.
+
+If the rnpm installation goes off without a hitch, you can now skip to the **[Crashlytics Usage section](crashlytics-usage)** or the **[Answers Usage section](answers-usage)**.
+
+### Without [rnpm][rnpm]
+
+`npm install react-native-fabric`
 
 - Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
-### iOS
- 
+#### iOS
+
 - Open your project in Xcode
 - Run ```open node_modules/react-native-fabric/ios```
 - Drag `SMXCrashlytics.xcodeproj` into your `Libraries` group
@@ -23,7 +33,7 @@ A React Native library for Fabric, Crashlytics and Answers
 - ⌘+B
 
 <a name="android"></a>
-### Android
+#### Android
 
 *Note: Android support requires React Native 0.16 or later 
 
@@ -207,3 +217,6 @@ Answers.logPurchase(24.99,'USD',true, 'Air Jordans', 'shoes', '987654');
 
 ## License
 MIT © Cory Smith 2016
+
+
+[rnpm]: https://github.com/rnpm/rnpm
