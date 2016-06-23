@@ -17,7 +17,7 @@ If the rnpm installation goes off without a hitch, you can now skip to the **[Cr
 
 ### Without [rnpm][rnpm]
 
-`npm install react-native-fabric`
+`npm install react-native-fabric --save`
 
 - Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
