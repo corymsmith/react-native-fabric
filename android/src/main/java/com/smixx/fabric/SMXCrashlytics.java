@@ -91,7 +91,7 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
             StackTraceElement stack = new StackTraceElement("", functionName, map.getString("fileName"), map.getInt("lineNumber"));
             stackTrace[i] = stack;
         }
-        Exception e = new Exception();
+        Exception e = new Exception(name + "\n" + reason);
         e.setStackTrace(stackTrace);
         Crashlytics.logException(e);
     }
