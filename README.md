@@ -187,6 +187,8 @@ var { Answers } = Fabric;
 // All log functions take an optional array of custom attributes as the last parameter
 Answers.logCustom('Performed a custom event', { bigData: true });
 
+Answers.logContentView('To-Do Edit', 'To-Do', 'to-do-42', { user-id: 93 });
+
 Answers.logAddToCart(24.50, 'USD', 'Air Jordans', 'shoes', '987654', {color: 'red'});
 
 Answers.logInvite('Facebook');
