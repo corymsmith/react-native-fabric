@@ -12,7 +12,6 @@ import com.crashlytics.android.answers.InviteEvent;
 import com.crashlytics.android.answers.LevelEndEvent;
 import com.crashlytics.android.answers.LevelStartEvent;
 import com.crashlytics.android.answers.LoginEvent;
-import com.crashlytics.android.answers.PredefinedEvent;
 import com.crashlytics.android.answers.PurchaseEvent;
 import com.crashlytics.android.answers.RatingEvent;
 import com.crashlytics.android.answers.SearchEvent;
@@ -32,9 +31,9 @@ import java.util.Currency;
 public class SMXAnswers extends ReactContextBaseJavaModule {
     public Activity activity;
 
-    public SMXAnswers(ReactApplicationContext reactContext, Activity activity) {
+    public SMXAnswers(ReactApplicationContext reactContext) {
         super(reactContext);
-        this.activity = activity;
+        this.activity = getCurrentActivity();
     }
 
     @Override
