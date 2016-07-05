@@ -7,7 +7,7 @@ A React Native library for Fabric, Crashlytics and Answers
 
 - Set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io)
 
-### With [rnpm][rnpm]
+### With [rnpm](https://github.com/rnpm/rnpm)
 
 `rnpm install react-native-fabric`
 
@@ -15,7 +15,7 @@ rnpm will automatically link all the necessary libraries for both iOS and Androi
 
 If the rnpm installation goes off without a hitch, you can now skip to the **[Crashlytics Usage section](crashlytics-usage)** or the **[Answers Usage section](answers-usage)**.
 
-### Without [rnpm][rnpm]
+### Without [rnpm](https://github.com/rnpm/rnpm)
 
 `npm install react-native-fabric --save`
 
