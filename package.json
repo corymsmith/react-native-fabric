@@ -5,7 +5,7 @@
   "main": "index",
   "rnpm": {
     "android": {
-      "packageInstance": "new FabricPackage(this)"
+      "packageInstance": "new FabricPackage()"
     }
   },
   "scripts": {
