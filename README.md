@@ -160,22 +160,21 @@ Make sure you also follow the steps described in [`Android`](#android).
 * RN 0.29+ - Edit your `MainApplication.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
 
   ```diff
-    + import android.os.Bundle;
-    + import com.crashlytics.android.Crashlytics;
-    + import io.fabric.sdk.android.Fabric;
+  + import com.crashlytics.android.Crashlytics;
+  + import io.fabric.sdk.android.Fabric;
   
-    public class MainApplication extends Application implements ReactApplication {
+  public class MainApplication extends Application implements ReactApplication {
   
-    +   @Override
-    +   protected void onCreate() {
-    +       super.onCreate();
-    +       Fabric.with(this, new Crashlytics());
-    +   }
+  +   @Override
+  +   protected void onCreate() {
+  +       super.onCreate();
+  +       Fabric.with(this, new Crashlytics());
+  +   }
   
-      [...]
+    [...]
   
-    }
-    ``` 
+  }
+  ``` 
 
 * Edit your `AndroidManifest.xml` (in `android/app/src/main/`) to look like this. Make sure to enter your fabric API key after `android:value=`, you can find your key on your fabric organisation page.
 
