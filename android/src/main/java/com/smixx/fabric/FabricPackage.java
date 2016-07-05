@@ -1,7 +1,5 @@
 package com.smixx.fabric;
 
-import android.app.Activity;
-
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
@@ -13,17 +11,12 @@ import java.util.List;
 
 public class FabricPackage implements ReactPackage {
 
-    private Activity mActivity = null;
-    public FabricPackage(Activity activity) {
-        mActivity = activity;
-    }
-
     @Override
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new SMXCrashlytics(reactContext, mActivity));
-        modules.add(new SMXAnswers(reactContext, mActivity));
+        modules.add(new SMXCrashlytics(reactContext));
+        modules.add(new SMXAnswers(reactContext));
         return modules;
     }
 

@@ -13,9 +13,9 @@ import com.facebook.react.bridge.ReadableMap;
 public class SMXCrashlytics extends ReactContextBaseJavaModule {
     public Activity activity;
 
-    public SMXCrashlytics(ReactApplicationContext reactContext, Activity activity) {
+    public SMXCrashlytics(ReactApplicationContext reactContext) {
         super(reactContext);
-        this.activity = activity;
+        this.activity = getCurrentActivity();
     }
 
     @Override
