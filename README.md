@@ -64,7 +64,7 @@ If the rnpm installation goes off without a hitch, you can now skip to the **[Cr
   }
   ```
 
-* Edit your `MainActivity.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
+* RN < 0.29 - Edit your `MainActivity.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
 
   ```diff
   package com.myapp;
@@ -76,12 +76,31 @@ If the rnpm installation goes off without a hitch, you can now skip to the **[Cr
     @Override
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-  +         new FabricPackage(this),
+  +         new FabricPackage(),
             new MainReactPackage()
         );
     }
   }
   ```
+
+* RN 0.29+ - Edit your `MainApplication.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
+
+  ```diff
+  package com.myapp;
+
+  + import com.smixx.fabric.FabricPackage;
+
+  ....
+  public class MainApplication extends Application implements ReactApplication {
+    @Override
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+  +         new FabricPackage(),
+            new MainReactPackage()
+        );
+    }
+  }
+  ```  
 
 <a name="no_android_studio"></a>
 ### Android without Android Studio
@@ -118,7 +137,7 @@ Make sure you also follow the steps described in [`Android`](#android).
   }
   ```
 
-* Edit your `MainActivity.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
+* RN < 0.29 - Edit your `MainActivity.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
 
   ```diff
   + import android.os.Bundle;
@@ -137,6 +156,26 @@ Make sure you also follow the steps described in [`Android`](#android).
 
   }
   ```
+
+* RN 0.29+ - Edit your `MainApplication.java` (deep in `android/app/src/main/java/...`) to look like this (note **two** places to edit):
+
+  ```diff
+    + import android.os.Bundle;
+    + import com.crashlytics.android.Crashlytics;
+    + import io.fabric.sdk.android.Fabric;
+  
+    public class MainApplication extends Application implements ReactApplication {
+  
+    +   @Override
+    +   protected void onCreate() {
+    +       super.onCreate();
+    +       Fabric.with(this, new Crashlytics());
+    +   }
+  
+      [...]
+  
+    }
+    ``` 
 
 * Edit your `AndroidManifest.xml` (in `android/app/src/main/`) to look like this. Make sure to enter your fabric API key after `android:value=`, you can find your key on your fabric organisation page.
 
