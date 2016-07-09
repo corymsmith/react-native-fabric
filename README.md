@@ -166,7 +166,7 @@ Make sure you also follow the steps described in [`Android`](#android).
   public class MainApplication extends Application implements ReactApplication {
   
   +   @Override
-  +   protected void onCreate() {
+  +   public void onCreate() {
   +       super.onCreate();
   +       Fabric.with(this, new Crashlytics());
   +   }
