@@ -90,8 +90,8 @@ RCT_EXPORT_METHOD(recordCustomExceptionName:(nonnull NSString *)name reason:(NSS
     for (NSDictionary *dict in frameArray) {
       CLSStackFrame *frame = [CLSStackFrame stackFrame];
       [frame setFileName: dict[@"fileName"]];
-      [frame setLineNumber: dict[@"lineNumber"]];
-      [frame setOffset: dict[@"columnNumber"]];
+      [frame setLineNumber: [dict[@"lineNumber"] intValue]];
+      [frame setOffset: [dict[@"columnNumber"] intValue]];
       [frame setSymbol: dict[@"functionName"]];
       [clsFrames addObject: frame];
     }
