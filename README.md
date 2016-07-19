@@ -166,7 +166,7 @@ Make sure you also follow the steps described in [`Android`](#android).
   public class MainApplication extends Application implements ReactApplication {
   
   +   @Override
-  +   protected void onCreate() {
+  +   public void onCreate() {
   +       super.onCreate();
   +       Fabric.with(this, new Crashlytics());
   +   }
@@ -175,6 +175,8 @@ Make sure you also follow the steps described in [`Android`](#android).
   
   }
   ``` 
+
+* Note: the `onCreate` access privilege goes from `protected` to `public` from RN 0.28+
 
 * Edit your `AndroidManifest.xml` (in `android/app/src/main/`) to look like this. Make sure to enter your fabric API key after `android:value=`, you can find your key on your fabric organisation page.
 
