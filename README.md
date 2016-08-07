@@ -3,6 +3,8 @@ A React Native library for Fabric, Crashlytics and Answers
 
 [![NPM](https://nodei.co/npm/react-native-fabric.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-fabric/)
 
+For Twitter Kit support, see [react-native-fabric-twitterkit](https://github.com/tkporter/react-native-fabric-twitterkit)
+
 ## Installation
 
 - Set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io)
