@@ -7,9 +7,13 @@ For Twitter Kit support, see [react-native-fabric-twitterkit](https://github.com
 
 ## Installation
 
-- Set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io)
+### 1. Add Fabric / Crashlytics to your project
 
-### With [rnpm](https://github.com/rnpm/rnpm)
+- First, set up Fabric / Crashlytics in your app as instructed on [Fabric.io](https://fabric.io).  This includes downloading the fabric app and walking through the setup steps (downloading the SDK, adding it to your project and making some changes to your project).
+
+### 2. Add react-native-fabric
+
+#### With [rnpm](https://github.com/rnpm/rnpm)
 
 `rnpm install react-native-fabric`
 
@@ -17,13 +21,13 @@ rnpm will automatically link all the necessary libraries for both iOS and Androi
 
 If the rnpm installation goes off without a hitch, you can now skip to the **[Crashlytics Usage section](#crashlytics-usage)** or the **[Answers Usage section](#answers-usage)**.
 
-### Without [rnpm](https://github.com/rnpm/rnpm)
+#### Without [rnpm](https://github.com/rnpm/rnpm)
 
 `npm install react-native-fabric --save`
 
 - Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
-#### iOS
+#### Manually iOS
 
 - Open your project in Xcode
 - Run ```open node_modules/react-native-fabric/ios```
@@ -105,7 +109,7 @@ If the rnpm installation goes off without a hitch, you can now skip to the **[Cr
   ```  
 
 <a name="no_android_studio"></a>
-### Android without Android Studio
+#### Android without Android Studio
 
 Make sure you also follow the steps described in [`Android`](#android).
 
