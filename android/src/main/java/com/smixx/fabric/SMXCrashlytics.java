@@ -88,7 +88,12 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
         for (int i = 0; i < frameArray.size(); i++) {
             ReadableMap map = frameArray.getMap(i);
             String functionName = map.hasKey("functionName") ? map.getString("functionName") : "Unknown Function";
-            StackTraceElement stack = new StackTraceElement("", functionName, map.getString("fileName"), map.getInt("lineNumber"));
+            StackTraceElement stack = new StackTraceElement(
+                "",
+                functionName,
+                map.getString("fileName"),
+                map.hasKey("lineNumber") ? map.getInt("lineNumber") : -1
+            );
             stackTrace[i] = stack;
         }
         Exception e = new Exception(name + "\n" + reason);
