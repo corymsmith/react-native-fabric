@@ -27,7 +27,13 @@ If the rnpm installation goes off without a hitch, you can now skip to the **[Cr
 
 - Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
-#### Manually iOS
+#### Manually iOS With CocoaPods support
+
+- add the following line to Podfile
+
+`pod 'ReactNativeFabric', :path => '../node_modules/react-native-fabric'`
+
+#### Manually iOS Without CocoaPods support
 
 - Open your project in Xcode
 - Run ```open node_modules/react-native-fabric/ios```
