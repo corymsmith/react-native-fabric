@@ -35,6 +35,12 @@ If the rnpm installation goes off without a hitch, you can now skip to the **[Cr
 
 #### Manually iOS Without CocoaPods support
 
+Download the [Crashlytics
+SDK](https://fabric.io/kits/ios/crashlytics/manual-install) and place the two
+frameworks in a directory called `Crashlytics` in the `ios` directory. You may
+want to add this directory to your `.gitignore` as they take up a decent amount
+of space and will slow down Git. Then do the following:
+
 - Open your project in Xcode
 - Run ```open node_modules/react-native-fabric/ios```
 - Drag `SMXCrashlytics.xcodeproj` into your `Libraries` group
