@@ -23,8 +23,9 @@ RCT_EXPORT_METHOD(recordError:(NSDictionary *)error)
 {
     NSInteger *code;
     NSString *domain;
-    if ([error objectForKey:@"code"])
-        code = [error[@"code"] intValue];
+    NSObject *codeObject = [error objectForKey:@"code"];
+    if (codeObject && [codeObject isKindOfClass:NSNumber.class])
+        code = [(NSNumber *)codeObject intValue];
     else
         code = DefaultCode;
     if ([error objectForKey:@"domain"])
