@@ -168,8 +168,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../example/node_modules/react-native/React/**",
-					"$(SRCROOT)/../../react-native/React/**",
+					"$(BUILT_PRODUCTS_DIR)/usr/local/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -218,8 +217,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../example/node_modules/react-native/React/**",
-					"$(SRCROOT)/../../react-native/React/**",
+					"$(BUILT_PRODUCTS_DIR)/usr/local/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
