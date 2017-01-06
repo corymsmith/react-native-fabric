@@ -3,6 +3,11 @@ A React Native library for Fabric, Crashlytics and Answers
 
 [![NPM](https://nodei.co/npm/react-native-fabric.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-fabric/)
 
+
+## Versioning
+- For React Native > 0.40 use version 0.4.0
+- For React Native < 0.40 use version 0.3.2
+
 For Twitter Kit support, see [react-native-fabric-twitterkit](https://github.com/tkporter/react-native-fabric-twitterkit)
 
 ## Installation
