@@ -1,7 +1,7 @@
 #import "SMXAnswers.h"
-#import "RCTBridgeModule.h"
-#import "RCTEventDispatcher.h"
-#import "RCTBridge.h"
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventDispatcher.h>
+#import <React/RCTBridge.h>
 #import <Crashlytics/Crashlytics.h>
 
 @implementation SMXAnswers
