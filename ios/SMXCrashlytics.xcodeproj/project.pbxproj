@@ -234,6 +234,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)/../../../ios/Crashlytics",
+					"$(SRCROOT)/../../../ios/Pods/Crashlytics/iOS",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -254,6 +255,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)/../../../ios/Crashlytics",
+					"$(SRCROOT)/../../../ios/Pods/Crashlytics/iOS",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
