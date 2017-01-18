@@ -18,27 +18,27 @@ For Twitter Kit support, see [react-native-fabric-twitterkit](https://github.com
 
 ### 2. Add react-native-fabric
 
-#### With [rnpm](https://github.com/rnpm/rnpm)
+#### Automatically
 
-`rnpm install react-native-fabric`
+`react-native install react-native-fabric`, or with [rnpm](https://github.com/rnpm/rnpm): `rnpm install react-native-fabric`
 
-rnpm will automatically link all the necessary libraries for both iOS and Android.
+React Native / rnpm will automatically link all the necessary libraries for both iOS and Android.
 
-If the rnpm installation goes off without a hitch, you can now skip to the **[Crashlytics Usage section](#crashlytics-usage)** or the **[Answers Usage section](#answers-usage)**.
+If the installation goes off without a hitch, you can now skip to the **[Crashlytics Usage section](#crashlytics-usage)** or the **[Answers Usage section](#answers-usage)**.
 
-#### Without [rnpm](https://github.com/rnpm/rnpm)
+#### Manually
 
 `npm install react-native-fabric --save`
 
 - Alternatively for Android, if you **don't** use Android studio you can skip the first step and instead follow the steps described in [`Android`](#android) **as well as** the steps in [`Android without Android Studio`](#no_android_studio).
 
-#### Manually iOS With CocoaPods support
+##### Manually iOS With CocoaPods support
 
 - add the following line to Podfile
 
 `pod 'ReactNativeFabric', :path => '../node_modules/react-native-fabric'`
 
-#### Manually iOS Without CocoaPods support
+##### Manually iOS Without CocoaPods support
 
 Download the [Crashlytics
 SDK](https://fabric.io/kits/ios/crashlytics/manual-install) and place the two
@@ -67,7 +67,7 @@ Then do the following:
 - ⌘+B
 
 <a name="android"></a>
-#### Android
+##### Android
 
 *Note: Android support requires React Native 0.16 or later 
 
@@ -137,7 +137,7 @@ Then do the following:
   ```  
 
 <a name="no_android_studio"></a>
-#### Android without Android Studio
+##### Android without Android Studio
 
 Make sure you also follow the steps described in [`Android`](#android).
 
