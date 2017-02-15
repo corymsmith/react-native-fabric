@@ -52,7 +52,7 @@ you placed the framework directly under `ios/Crashlytics` as specified above,t
 the contents of the script will then be:
 
 ```
-"$(SRCROOT)/Crashlytics/Fabric.framework/run" API_KEY API_SECRET
+"${SRCROOT}/Crashlytics/Fabric.framework/run" API_KEY API_SECRET
 ```
 
 Then do the following:
