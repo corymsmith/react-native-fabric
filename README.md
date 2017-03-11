@@ -230,7 +230,7 @@ Make sure you also follow the steps described in [`Android`](#android).
 
 ## Crashlytics Usage
 
-* Note: logging will not be registered on Android to the Fabric dashboard until the app is bundled for release.
+**Note: logging will not be registered on Android to the Fabric dashboard until the app is bundled for release.**
 
 To see all available methods take a look at [Crashlytics.js](https://github.com/corymsmith/react-native-fabric/blob/master/Crashlytics.js)
 
