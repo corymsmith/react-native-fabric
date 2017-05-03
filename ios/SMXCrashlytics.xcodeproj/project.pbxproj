@@ -7,11 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6463C8551EBA12CB0095B8CD /* SMXAnswers.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C01C86A251004ABB23 /* SMXAnswers.m */; };
+		6463C8561EBA12CB0095B8CD /* SMXCrashlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C21C86A251004ABB23 /* SMXCrashlytics.m */; };
 		D87A76C31C86A251004ABB23 /* SMXAnswers.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C01C86A251004ABB23 /* SMXAnswers.m */; };
 		D87A76C41C86A251004ABB23 /* SMXCrashlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = D87A76C21C86A251004ABB23 /* SMXCrashlytics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		6463C84A1EBA12A60095B8CD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D8D9DB811C6D03DB009FBC0E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -24,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6463C84C1EBA12A60095B8CD /* libSMXCrashlytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMXCrashlytics.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87A76BF1C86A251004ABB23 /* SMXAnswers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXAnswers.h; path = SMXCrashlytics/SMXAnswers.h; sourceTree = "<group>"; };
 		D87A76C01C86A251004ABB23 /* SMXAnswers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMXAnswers.m; path = SMXCrashlytics/SMXAnswers.m; sourceTree = "<group>"; };
 		D87A76C11C86A251004ABB23 /* SMXCrashlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMXCrashlytics.h; path = SMXCrashlytics/SMXCrashlytics.h; sourceTree = "<group>"; };
@@ -32,6 +44,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6463C8491EBA12A60095B8CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D8D9DB801C6D03DB009FBC0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				D8D9DB831C6D03DB009FBC0E /* libSMXCrashlytics.a */,
+				6463C84C1EBA12A60095B8CD /* libSMXCrashlytics.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +84,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6463C84B1EBA12A60095B8CD /* SMXCrashlytics-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6463C8541EBA12A60095B8CD /* Build configuration list for PBXNativeTarget "SMXCrashlytics-tvOS" */;
+			buildPhases = (
+				6463C8481EBA12A60095B8CD /* Sources */,
+				6463C8491EBA12A60095B8CD /* Frameworks */,
+				6463C84A1EBA12A60095B8CD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SMXCrashlytics-tvOS";
+			productName = "SMXCrashlytics-tvOS";
+			productReference = 6463C84C1EBA12A60095B8CD /* libSMXCrashlytics.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		D8D9DB821C6D03DB009FBC0E /* SMXCrashlytics */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8D9DB891C6D03DB009FBC0E /* Build configuration list for PBXNativeTarget "SMXCrashlytics" */;
@@ -90,6 +127,10 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Lane Rettig";
 				TargetAttributes = {
+					6463C84B1EBA12A60095B8CD = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					D8D9DB821C6D03DB009FBC0E = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
@@ -108,11 +149,21 @@
 			projectRoot = "";
 			targets = (
 				D8D9DB821C6D03DB009FBC0E /* SMXCrashlytics */,
+				6463C84B1EBA12A60095B8CD /* SMXCrashlytics-tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6463C8481EBA12A60095B8CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6463C8551EBA12CB0095B8CD /* SMXAnswers.m in Sources */,
+				6463C8561EBA12CB0095B8CD /* SMXCrashlytics.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D8D9DB7F1C6D03DB009FBC0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +176,38 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		6463C8521EBA12A60095B8CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SMXCrashlytics;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		6463C8531EBA12A60095B8CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = SMXCrashlytics;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
 		D8D9DB6B1C6D01F4009FBC0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -167,8 +250,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-				);
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -215,8 +297,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-				);
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -272,6 +353,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6463C8541EBA12A60095B8CD /* Build configuration list for PBXNativeTarget "SMXCrashlytics-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6463C8521EBA12A60095B8CD /* Debug */,
+				6463C8531EBA12A60095B8CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D8D9DB5F1C6D01F4009FBC0E /* Build configuration list for PBXProject "SMXCrashlytics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
