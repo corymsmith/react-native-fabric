@@ -82,6 +82,18 @@ Then do the following:
   + project(':react-native-fabric').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fabric/android')
   ```
 
+* Edit `android/build.gradle` (note: **android** folder) to look like this:
+
+```diff
+allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
++         maven { url 'https://maven.fabric.io/public' }
+    }
+}
+```
+
 * Edit `android/app/build.gradle` (note: **app** folder) to look like this: 
 
   ```diff
