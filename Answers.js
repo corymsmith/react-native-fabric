@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var { NativeModules, Platform } = require('react-native');
+var { NativeModules } = require('react-native');
 var SMXAnswers = NativeModules.SMXAnswers;
 
 module.exports = {
@@ -64,5 +64,5 @@ function getAsStringOrNull(value:number) {
     return value;
   return value + "";
 }
-  
+
 
