@@ -271,7 +271,7 @@ var Fabric = require('react-native-fabric');
 
 var { Answers } = Fabric;
 
-// All log functions take an optional array of custom attributes as the last parameter
+// All log functions take an optional object of custom attributes as the last parameter
 Answers.logCustom('Performed a custom event', { bigData: true });
 
 Answers.logContentView('To-Do Edit', 'To-Do', 'to-do-42', { user-id: 93 });
