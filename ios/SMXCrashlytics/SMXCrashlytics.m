@@ -5,7 +5,7 @@
 @synthesize bridge = _bridge;
 
 NSString *const DefaultDomain = @"com.smixx.fabric.SMXCrashlytics";
-NSInteger *const DefaultCode = 100;
+NSInteger const DefaultCode = 100;
 
 RCT_EXPORT_MODULE();
 
@@ -21,7 +21,7 @@ RCT_EXPORT_METHOD(log:(NSString *)message)
 
 RCT_EXPORT_METHOD(recordError:(NSDictionary *)error)
 {
-    NSInteger *code;
+    NSInteger code;
     NSString *domain;
     NSObject *codeObject = [error objectForKey:@"code"];
     if (codeObject && [codeObject isKindOfClass:NSNumber.class])

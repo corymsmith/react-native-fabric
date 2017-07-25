@@ -1,19 +1,21 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
+ * @flow
  */
-'use strict';
-import React, {
+
+import React, { Component } from 'react';
+import {
   AppRegistry,
-  Component,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-import { Crashlytics } from 'react-native-fabric'
+import { Crashlytics } from 'react-native-fabric';
 
-class example extends Component {
+export default class example extends Component {
+
   onPress() {
     // just a string
     Crashlytics.recordError("IT BROKED!");
