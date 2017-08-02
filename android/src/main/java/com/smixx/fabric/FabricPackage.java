@@ -19,6 +19,10 @@ public class FabricPackage implements ReactPackage {
         modules.add(new SMXAnswers(reactContext));
         return modules;
     }
+    
+    public List<Class<? extends JavaScriptModule>> createJSModules() {		
+        return Collections.emptyList();		
+    }
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
