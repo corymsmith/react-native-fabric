@@ -5,7 +5,7 @@ A React Native library for Fabric, Crashlytics and Answers
 
 
 ## Versioning
-- For React Native > 0.40 use version 0.4.0
+- For React Native > 0.40 use version 0.5.1
 - For React Native < 0.40 use version 0.3.2
 
 For Twitter Kit support, see [react-native-fabric-twitterkit](https://github.com/tkporter/react-native-fabric-twitterkit)
