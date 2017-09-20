@@ -35,5 +35,9 @@
     "type": "git",
     "url": "git://github.com/corymsmith/react-native-fabric.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "flow-bin": "^0.54.1",
+    "prettier": "^1.7.0"
+  }
 }
