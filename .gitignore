@@ -49,3 +49,4 @@ project.xcworkspace
 # Idea and Android Studio
 *.iml
 android/local.properties
+.gradle
