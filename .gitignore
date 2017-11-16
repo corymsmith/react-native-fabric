@@ -45,3 +45,7 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 .idea
+
+# Idea and Android Studio
+*.iml
+android/local.properties

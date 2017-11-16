@@ -5,7 +5,7 @@ A React Native library for Fabric, Crashlytics and Answers
 
 
 ## Versioning
-- For React Native > 0.40 use version 0.4.0
+- For React Native > 0.40 use version 0.5.1
 - For React Native < 0.40 use version 0.3.2
 
 For Twitter Kit support, see [react-native-fabric-twitterkit](https://github.com/tkporter/react-native-fabric-twitterkit)
@@ -271,10 +271,10 @@ var Fabric = require('react-native-fabric');
 
 var { Answers } = Fabric;
 
-// All log functions take an optional array of custom attributes as the last parameter
+// All log functions take an optional object of custom attributes as the last parameter
 Answers.logCustom('Performed a custom event', { bigData: true });
 
-Answers.logContentView('To-Do Edit', 'To-Do', 'to-do-42', { user-id: 93 });
+Answers.logContentView('To-Do Edit', 'To-Do', 'to-do-42', { userId: 93 });
 
 Answers.logAddToCart(24.50, 'USD', 'Air Jordans', 'shoes', '987654', {color: 'red'});
 
