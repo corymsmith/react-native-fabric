@@ -171,7 +171,7 @@ Make sure you also follow the steps described in [`Android`](#android).
 
   dependencies {
       [...]
-  +     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+  +     compile('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
   +         transitive = true;
   +     }
   }
