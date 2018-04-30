@@ -1,13 +1,12 @@
 /**
  * @providesModule Crashlytics
  */
-'use strict';
+// @flow
 
-var { NativeModules, Platform } = require('react-native');
-var SMXCrashlytics = NativeModules.SMXCrashlytics;
+import { NativeModules, Platform } from 'react-native'
+const SMXCrashlytics = NativeModules.SMXCrashlytics
 
-module.exports = {
-
+export const Crashlytics = {
   crash: SMXCrashlytics.crash,
   throwException: SMXCrashlytics.throwException,
 
@@ -19,77 +18,79 @@ module.exports = {
    * (or "flattening") but keep it simple for now.
    * @param error
    */
-  recordError: function (error) {
-    var newError;
+  recordError: function(error: mixed) {
+    var newError
 
-    if (typeof error === "string" || error instanceof String) {
-      newError = {domain: error};
-    }
-    else if (typeof error === "number") {
-      newError = {code: error};
-    }
-    else if (typeof error === "object") {
-      newError = {};
+    if (typeof error === 'string' || error instanceof String) {
+      newError = { domain: error }
+    } else if (typeof error === 'number') {
+      newError = { code: error }
+    } else if (typeof error === 'object') {
+      newError = {}
 
       // Pass everything in as a string or number to be safe
       for (var k in error) {
         if (error.hasOwnProperty(k)) {
-          if (((typeof error[k]) !== "number") && ((typeof error[k]) !== "string") && !(error[k] instanceof String)) {
-            newError[k] = JSON.stringify(error[k]);
-          }
-          else {
+          if (
+            typeof error[k] !== 'number' &&
+            typeof error[k] !== 'string' &&
+            !(error[k] instanceof String)
+          ) {
+            newError[k] = JSON.stringify(error[k])
+          } else {
             newError[k] = error[k]
           }
         }
       }
-    }
-    else {
+    } else {
       // Array?
       // Fall back on JSON
       newError = {
-        json: JSON.stringify(error)
+        json: JSON.stringify(error),
       }
     }
-    SMXCrashlytics.recordError(newError);
+    SMXCrashlytics.recordError(newError)
   },
 
-  logException: function (value:string) {
-    SMXCrashlytics.logException(value);
+  logException: function(value: string) {
+    SMXCrashlytics.logException(value)
   },
 
-  log: function (message:string) {
-    SMXCrashlytics.log(message);
+  log: function(message: string) {
+    SMXCrashlytics.log(message)
   },
 
-  setUserEmail: function (email:string) {
-    SMXCrashlytics.setUserEmail(email);
+  setUserEmail: function(email: string | null) {
+    SMXCrashlytics.setUserEmail(email)
   },
 
-  setUserIdentifier: function (userIdentifier) {
-    SMXCrashlytics.setUserIdentifier(userIdentifier);
+  setUserIdentifier: function(userIdentifier: string | null) {
+    SMXCrashlytics.setUserIdentifier(userIdentifier)
   },
 
-  setUserName: function (userName:string) {
-    SMXCrashlytics.setUserName(userName);
+  setUserName: function(userName: string | null) {
+    SMXCrashlytics.setUserName(userName)
   },
 
-  setBool: function (key:string, value:boolean) {
-    SMXCrashlytics.setBool(key, value);
+  setBool: function(key: string, value: boolean) {
+    SMXCrashlytics.setBool(key, value)
   },
 
-  setNumber: function (key:string, value:number) {
+  setNumber: function(key: string, value: number) {
     // This is a hack but allows us to have a standard API for both platforms
-    if (Platform.OS === 'android') {
-      value = value + "";
-    }
-    SMXCrashlytics.setNumber(key, value);
+    if (Platform.OS === 'android') SMXCrashlytics.setNumber(key, value + '')
+    else SMXCrashlytics.setNumber(key, value)
   },
 
-  setString: function (key:string, value:string) {
-    SMXCrashlytics.setString(key, value);
+  setString: function(key: string, value: string) {
+    SMXCrashlytics.setString(key, value)
   },
 
-  recordCustomExceptionName: function(name:string, reason:string, frameArray:Array<Object>) {
-    SMXCrashlytics.recordCustomExceptionName(name, reason, frameArray);
-  }
-};
+  recordCustomExceptionName: function(
+    name: string,
+    reason: string,
+    stack?: Object[]
+  ) {
+    SMXCrashlytics.recordCustomExceptionName(name, reason, stack || [])
+  },
+}
