@@ -1,12 +1,6 @@
 # react-native-fabric
 A React Native library for Fabric, Crashlytics and Answers
 
-# I am currently looking for someone to take over maintaining this library, I am no longer using it personally and don't have time to maintain it. 
-## If you are interested in taking it over or maintaining it please comment on [this issue](https://github.com/corymsmith/react-native-fabric/issues/154)
-
-
-
-
 [![NPM](https://nodei.co/npm/react-native-fabric.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-fabric/)
 
 
