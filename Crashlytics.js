@@ -52,8 +52,12 @@ export const Crashlytics = {
     SMXCrashlytics.recordError(newError)
   },
 
-  logException: function(value: string) {
-    SMXCrashlytics.logException(value)
+  logException: function(value: string | Object) {
+    if(typeof value === "object") {
+      SMXCrashlytics.logException(JSON.stringify(value))
+    } else {
+      SMXCrashlytics.logException(value)
+    }    
   },
 
   log: function(message: string) {
