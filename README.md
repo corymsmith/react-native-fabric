@@ -257,6 +257,7 @@ Crashlytics.setNumber('post_count', 5);
 
 // Record a non-fatal JS error only on Android
 Crashlytics.logException('');
+Crashlytics.logExceptionWithId('id', '{error: your own custom error object}', 'the source');
 
 // Record a non-fatal JS error only on iOS
 Crashlytics.recordError('something went wrong!');
