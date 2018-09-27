@@ -1,10 +1,11 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.2.0'
     }
 }
 
@@ -34,8 +35,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
+    implementation('com.facebook.react:react-native:+'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
         transitive = true;
     }
 }
