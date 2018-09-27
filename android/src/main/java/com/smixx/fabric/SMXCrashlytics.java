@@ -45,7 +45,8 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
     @ReactMethod
     public void logExceptionWithId(String id, String error, String source) {
         Exception exception = new Exception(id);
-        List<StackTraceElement> arrayList = new ArrayList<>();
+
+        List<StackTraceElement> arrayList = new ArrayList<StackTraceElement>();
         if (source != null) {
             arrayList.add(new StackTraceElement(
                     id,
@@ -59,10 +60,10 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
                 error,
                 "",
                 "",
-                0
+                0   
         ));
 
-        exception.setStackTrace((StackTraceElement[])arrayList.toArray());
+        exception.setStackTrace(arrayList.toArray(new StackTraceElement[arrayList.size()]));
         Crashlytics.logException(exception);
     }
 
