@@ -10,6 +10,10 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class SMXCrashlytics extends ReactContextBaseJavaModule {
     public Activity activity;
 
@@ -31,6 +35,36 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
     @ReactMethod
     public void logException(String value) {
         Crashlytics.logException(new RuntimeException(value));
+    }
+
+    @ReactMethod
+    public void logExceptionWithId(String id, String error) {
+        logExceptionWithId(id, error, "");
+    }
+
+    @ReactMethod
+    public void logExceptionWithId(String id, String error, String source) {
+        Exception exception = new Exception(id);
+
+        List<StackTraceElement> arrayList = new ArrayList<StackTraceElement>();
+        if (source != null) {
+            arrayList.add(new StackTraceElement(
+                    id,
+                    source,
+                    "",
+                    0
+            ));
+        }
+
+        arrayList.add(new StackTraceElement(
+                error,
+                "",
+                "",
+                0   
+        ));
+
+        exception.setStackTrace(arrayList.toArray(new StackTraceElement[arrayList.size()]));
+        Crashlytics.logException(exception);
     }
 
     @ReactMethod
@@ -89,10 +123,10 @@ public class SMXCrashlytics extends ReactContextBaseJavaModule {
             ReadableMap map = frameArray.getMap(i);
             String functionName = map.hasKey("functionName") ? map.getString("functionName") : "Unknown Function";
             StackTraceElement stack = new StackTraceElement(
-                "",
-                functionName,
-                map.getString("fileName"),
-                map.hasKey("lineNumber") ? map.getInt("lineNumber") : -1
+                    "",
+                    functionName,
+                    map.getString("fileName"),
+                    map.hasKey("lineNumber") ? map.getInt("lineNumber") : -1
             );
             stackTrace[i] = stack;
         }
