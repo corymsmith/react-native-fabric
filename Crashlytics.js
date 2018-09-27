@@ -56,6 +56,10 @@ export const Crashlytics = {
     SMXCrashlytics.logException(value)
   },
 
+  logExceptionWithId: function(id: string, error: string, source: ?string) {
+    SMXCrashlytics.logExceptionWithId(id, error, source)
+  },
+
   log: function(message: string) {
     SMXCrashlytics.log(message)
   },
