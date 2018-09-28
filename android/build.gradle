@@ -2,8 +2,17 @@ def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        jcenter() //also add it here!!!
+    }
+}
+
 buildscript {
     repositories {
+        google()
         jcenter()
         maven {
             url 'https://maven.google.com/'
@@ -19,8 +28,8 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion safeExtGet('compileSdkVersion', 26)
-    buildToolsVersion safeExtGet('buildToolsVersion', '26.0.2')
+    compileSdkVersion safeExtGet('compileSdkVersion', 27)
+    buildToolsVersion safeExtGet('buildToolsVersion', '27.0.3')
 
     defaultConfig {
         minSdkVersion safeExtGet('minSdkVersion', 16)
@@ -39,10 +48,15 @@ repositories {
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    maven {
+        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        url "$rootDir/../node_modules/react-native/android"
+    }
+    google()
 }
 
 dependencies {
-    compile "com.facebook.react:react-native:${safeExtGet('reactNative', '+')}"
+    compileOnly "com.facebook.react:react-native:${safeExtGet('reactNative', '+')}"
     compile('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
         transitive = true;
     }
