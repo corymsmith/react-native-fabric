@@ -1,44 +1,51 @@
 {
   "name": "react-native-fabric",
-  "version": "0.5.1",
   "description": "A React Native library for Fabric, Crashlytics and Answers",
+  "version": "0.5.2",
+  "author": {
+    "name": "Cory Smith",
+    "email": "cory.m.smith@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/corymsmith/react-native-fabric/issues"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.54.1",
+    "generate-changelog": "^1.7.1",
+    "idx": "^2.4.0",
+    "minimist": "^1.2.0",
+    "prettier": "^1.7.0",
+    "simple-git": "^1.102.0"
+  },
+  "homepage": "https://github.com/corymsmith/react-native-fabric",
+  "keywords": [
+    "android",
+    "answers",
+    "crashlytics",
+    "fabric",
+    "ios",
+    "mobile",
+    "react",
+    "react-component",
+    "react-native",
+    "react-native-component"
+  ],
+  "license": "MIT",
   "main": "index",
-  "typings": "typings/react-native-fabric.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/corymsmith/react-native-fabric.git"
+  },
   "rnpm": {
     "android": {
       "packageInstance": "new FabricPackage()"
     }
   },
   "scripts": {
+    "release:major": "node ./changelog --major && npm version major && git push origin && git push origin --follow-tags",
+    "release:minor": "node ./changelog --minor && npm version minor && git push origin && git push origin --follow-tags",
+    "release:patch": "node ./changelog --patch && npm version patch && git push origin && git push origin --follow-tags",
     "test": "flow"
   },
-  "keywords": [
-    "react-native",
-    "react-component",
-    "react-native-component",
-    "react",
-    "mobile",
-    "ios",
-    "android",
-    "crashlytics",
-    "fabric",
-    "answers"
-  ],
-  "author": {
-    "name": "Cory Smith",
-    "email": "cory.m.smith@gmail.com"
-  },
-  "homepage": "https://github.com/corymsmith/react-native-fabric",
-  "bugs": {
-    "url": "https://github.com/corymsmith/react-native-fabric/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/corymsmith/react-native-fabric.git"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "flow-bin": "^0.54.1",
-    "prettier": "^1.7.0"
-  }
+  "typings": "typings/react-native-fabric.d.ts"
 }
