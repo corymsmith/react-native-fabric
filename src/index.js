@@ -1,4 +1,4 @@
 // @flow
 
-export { Crashlytics } from './Crashlytics'
-export { Answers } from './Answers'
+export { Crashlytics } from './Crashlytics';
+export { Answers } from './Answers';
