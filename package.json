@@ -1,7 +1,7 @@
 {
   "name": "react-native-fabric",
   "description": "A React Native library for Fabric, Crashlytics and Answers",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": {
     "name": "Cory Smith",
     "email": "cory.m.smith@gmail.com"
