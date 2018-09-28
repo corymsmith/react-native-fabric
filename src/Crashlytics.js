@@ -3,8 +3,8 @@
  */
 // @flow
 
-import { NativeModules, Platform } from 'react-native'
-const SMXCrashlytics = NativeModules.SMXCrashlytics
+import { NativeModules, Platform } from 'react-native';
+const SMXCrashlytics = NativeModules.SMXCrashlytics;
 
 export const Crashlytics = {
   crash: SMXCrashlytics.crash,
@@ -19,14 +19,14 @@ export const Crashlytics = {
    * @param error
    */
   recordError: function(error: mixed) {
-    var newError
+    var newError;
 
     if (typeof error === 'string' || error instanceof String) {
-      newError = { domain: error }
+      newError = { domain: error };
     } else if (typeof error === 'number') {
-      newError = { code: error }
+      newError = { code: error };
     } else if (typeof error === 'object') {
-      newError = {}
+      newError = {};
 
       // Pass everything in as a string or number to be safe
       for (var k in error) {
@@ -36,9 +36,9 @@ export const Crashlytics = {
             typeof error[k] !== 'string' &&
             !(error[k] instanceof String)
           ) {
-            newError[k] = JSON.stringify(error[k])
+            newError[k] = JSON.stringify(error[k]);
           } else {
-            newError[k] = error[k]
+            newError[k] = error[k];
           }
         }
       }
@@ -47,50 +47,46 @@ export const Crashlytics = {
       // Fall back on JSON
       newError = {
         json: JSON.stringify(error),
-      }
+      };
     }
-    SMXCrashlytics.recordError(newError)
+    SMXCrashlytics.recordError(newError);
   },
 
   logException: function(value: string) {
-    SMXCrashlytics.logException(value)
+    SMXCrashlytics.logException(value);
   },
 
   log: function(message: string) {
-    SMXCrashlytics.log(message)
+    SMXCrashlytics.log(message);
   },
 
   setUserEmail: function(email: string | null) {
-    SMXCrashlytics.setUserEmail(email)
+    SMXCrashlytics.setUserEmail(email);
   },
 
   setUserIdentifier: function(userIdentifier: string | null) {
-    SMXCrashlytics.setUserIdentifier(userIdentifier)
+    SMXCrashlytics.setUserIdentifier(userIdentifier);
   },
 
   setUserName: function(userName: string | null) {
-    SMXCrashlytics.setUserName(userName)
+    SMXCrashlytics.setUserName(userName);
   },
 
   setBool: function(key: string, value: boolean) {
-    SMXCrashlytics.setBool(key, value)
+    SMXCrashlytics.setBool(key, value);
   },
 
   setNumber: function(key: string, value: number) {
     // This is a hack but allows us to have a standard API for both platforms
-    if (Platform.OS === 'android') SMXCrashlytics.setNumber(key, value + '')
-    else SMXCrashlytics.setNumber(key, value)
+    if (Platform.OS === 'android') SMXCrashlytics.setNumber(key, value + '');
+    else SMXCrashlytics.setNumber(key, value);
   },
 
   setString: function(key: string, value: string) {
-    SMXCrashlytics.setString(key, value)
+    SMXCrashlytics.setString(key, value);
   },
 
-  recordCustomExceptionName: function(
-    name: string,
-    reason: string,
-    stack?: Object[]
-  ) {
-    SMXCrashlytics.recordCustomExceptionName(name, reason, stack || [])
+  recordCustomExceptionName: function(name: string, reason: string, stack?: Object[]) {
+    SMXCrashlytics.recordCustomExceptionName(name, reason, stack || []);
   },
-}
+};

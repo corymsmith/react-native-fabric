@@ -3,17 +3,17 @@
  */
 // @flow
 
-import { NativeModules, Platform } from 'react-native'
-const SMXAnswers = NativeModules.SMXAnswers
+import { NativeModules } from 'react-native';
+const SMXAnswers = NativeModules.SMXAnswers;
 
 function getAsStringOrNull(value: number): string {
-  if (value == null) return value
-  return value + ''
+  if (value == null) return value;
+  return value + '';
 }
 
 export const Answers = {
   logCustom: function(eventName: string, customAttributes?: Object) {
-    SMXAnswers.logCustom(eventName, customAttributes)
+    SMXAnswers.logCustom(eventName, customAttributes);
   },
   logAddToCart: function(
     itemPrice: number,
@@ -21,7 +21,7 @@ export const Answers = {
     itemName: string,
     itemType: string,
     itemId: string,
-    customAttributes?: Object
+    customAttributes?: Object,
   ) {
     SMXAnswers.logAddToCart(
       getAsStringOrNull(itemPrice),
@@ -29,52 +29,38 @@ export const Answers = {
       itemName,
       itemType,
       itemId,
-      customAttributes
-    )
+      customAttributes,
+    );
   },
 
   logContentView: function(
     contentName: string,
     contentType?: string,
     contentId?: string,
-    customAttributes?: Object
+    customAttributes?: Object,
   ) {
-    SMXAnswers.logContentView(
-      contentName,
-      contentType,
-      contentId,
-      customAttributes
-    )
+    SMXAnswers.logContentView(contentName, contentType, contentId, customAttributes);
   },
 
   logInvite: function(method: string, customAttributes?: Object) {
-    SMXAnswers.logInvite(method, customAttributes)
+    SMXAnswers.logInvite(method, customAttributes);
   },
 
   logLevelStart: function(levelName: string, customAttributes?: Object) {
-    SMXAnswers.logLevelStart(levelName, customAttributes)
+    SMXAnswers.logLevelStart(levelName, customAttributes);
   },
 
   logLevelEnd: function(
     levelName: string,
     score: number,
     success: boolean,
-    customAttributes?: Object
+    customAttributes?: Object,
   ) {
-    SMXAnswers.logLevelEnd(
-      levelName,
-      getAsStringOrNull(score),
-      success,
-      customAttributes
-    )
+    SMXAnswers.logLevelEnd(levelName, getAsStringOrNull(score), success, customAttributes);
   },
 
-  logLogin: function(
-    method: string,
-    success: boolean,
-    customAttributes?: Object
-  ) {
-    SMXAnswers.logLogin(method, success, customAttributes)
+  logLogin: function(method: string, success: boolean, customAttributes?: Object) {
+    SMXAnswers.logLogin(method, success, customAttributes);
   },
 
   logPurchase: function(
@@ -84,7 +70,7 @@ export const Answers = {
     itemName: string,
     itemType: string,
     itemId: string,
-    customAttributes?: Object
+    customAttributes?: Object,
   ) {
     SMXAnswers.logPurchase(
       getAsStringOrNull(itemPrice),
@@ -93,8 +79,8 @@ export const Answers = {
       itemName,
       itemType,
       itemId,
-      customAttributes
-    )
+      customAttributes,
+    );
   },
 
   logRating: function(
@@ -102,19 +88,19 @@ export const Answers = {
     contentId: string,
     contentType: string,
     contentName: string,
-    customAttributes?: Object
+    customAttributes?: Object,
   ) {
     SMXAnswers.logRating(
       getAsStringOrNull(rating),
       contentId,
       contentType,
       contentName,
-      customAttributes
-    )
+      customAttributes,
+    );
   },
 
   logSearch: function(query: string, customAttributes?: Object) {
-    SMXAnswers.logSearch(query, customAttributes)
+    SMXAnswers.logSearch(query, customAttributes);
   },
 
   logShare: function(
@@ -122,36 +108,26 @@ export const Answers = {
     contentName: string,
     contentType: string,
     contentId: string,
-    customAttributes?: Object
+    customAttributes?: Object,
   ) {
-    SMXAnswers.logShare(
-      method,
-      contentName,
-      contentType,
-      contentId,
-      customAttributes
-    )
+    SMXAnswers.logShare(method, contentName, contentType, contentId, customAttributes);
   },
 
-  logSignUp: function(
-    method: string,
-    success: boolean,
-    customAttributes?: Object
-  ) {
-    SMXAnswers.logSignUp(method, success, customAttributes)
+  logSignUp: function(method: string, success: boolean, customAttributes?: Object) {
+    SMXAnswers.logSignUp(method, success, customAttributes);
   },
 
   logStartCheckout: function(
     totalPrice: number,
     count: number,
     currency: string,
-    customAttributes?: Object
+    customAttributes?: Object,
   ) {
     SMXAnswers.logStartCheckout(
       getAsStringOrNull(totalPrice),
       getAsStringOrNull(count),
       currency,
-      customAttributes
-    )
+      customAttributes,
+    );
   },
-}
+};
