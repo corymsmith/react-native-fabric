@@ -151,7 +151,7 @@ declare module 'react-native-fabric' {
      * A key/value pair of strings.
      */
     interface Attributes {
-        [index: string]: String;
+        [index: string]: string | number;
     } 
 
     var Fabric: Fabric;
