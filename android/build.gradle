@@ -21,7 +21,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.1.4'
     }
 }
 
@@ -56,8 +56,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly "com.facebook.react:react-native:${safeExtGet('reactNative', '+')}"
-    compile('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
+    implementation "com.facebook.react:react-native:${safeExtGet('reactNative', '+')}"
+    implementation("com.crashlytics.sdk.android:crashlytics:2.9.5@aar") {
         transitive = true;
     }
 }
