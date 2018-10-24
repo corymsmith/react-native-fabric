@@ -13,11 +13,12 @@ allprojects {
 buildscript {
     repositories {
         google()
-        jcenter()
-        maven {
+         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        jcenter()
+       
     }
 
     dependencies {
