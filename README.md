@@ -36,7 +36,11 @@ If the installation goes off without a hitch, you can now skip to the **[Crashly
 
 - add the following line to Podfile
 
-`pod 'ReactNativeFabric', :path => '../node_modules/react-native-fabric'`
+
+```
+pod 'Fabric'
+pod 'Crashlytics'
+```
 
 ##### Manually iOS Without CocoaPods support
 
