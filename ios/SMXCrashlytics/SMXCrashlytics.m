@@ -16,7 +16,11 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(log:(NSString *)message)
 {
-  CLS_LOG(@"%@", message);
+#if DEBUG
+    CLSNSLog(@"%@", message);
+#else
+    CLSLog(@"%@", message);
+#endif
 }
 
 RCT_EXPORT_METHOD(recordError:(NSDictionary *)error)
