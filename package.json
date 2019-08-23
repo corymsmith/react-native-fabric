@@ -27,8 +27,8 @@
     "prettier": "^1.14.3",
     "simple-git": "^1.102.0",
     "lint-staged": "^7.2.0",
-    "react": "16.5.0",
-    "react-native": "^0.60.0"
+    "react": "16.8.6",
+    "react-native": "^0.60.5"
   },
   "homepage": "https://github.com/corymsmith/react-native-fabric",
   "keywords": [
