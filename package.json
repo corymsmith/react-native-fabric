@@ -58,11 +58,6 @@
     "type": "git",
     "url": "git://github.com/corymsmith/react-native-fabric.git"
   },
-  "rnpm": {
-    "android": {
-      "packageInstance": "new FabricPackage()"
-    }
-  },
   "scripts": {
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint src",
