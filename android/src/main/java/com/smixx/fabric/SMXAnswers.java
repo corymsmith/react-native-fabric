@@ -24,6 +24,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
+import io.fabric.sdk.android.Fabric;
 
 import java.math.BigDecimal;
 import java.util.Currency;
@@ -43,7 +44,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logAddToCart(String itemPrice, String currency, String itemName, String itemType, String itemId, ReadableMap customAttributes) {
-
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         AddToCartEvent event = new AddToCartEvent();
         if (currency != null)
             event.putCurrency(Currency.getInstance(currency));
@@ -61,6 +64,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logContentView(String contentName, String contentType, String contentId, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         ContentViewEvent event = new ContentViewEvent();
         if (contentId != null)
             event.putContentId(contentId);
@@ -75,6 +81,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logCustom(String eventName, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         CustomEvent event = new CustomEvent(eventName);
         addCustomAttributes(event, customAttributes);
         Answers.getInstance().logCustom(event);
@@ -82,6 +91,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logInvite(String method, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         InviteEvent event = new InviteEvent();
         event.putMethod(method);
         addCustomAttributes(event, customAttributes);
@@ -90,6 +102,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logLevelStart(String levelName, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         LevelStartEvent event = new LevelStartEvent();
         event.putLevelName(levelName);
         addCustomAttributes(event, customAttributes);
@@ -98,6 +113,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logLevelEnd(String levelName, String score, boolean success, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         LevelEndEvent event = new LevelEndEvent();
         if (levelName != null)
             event.putLevelName(levelName);
@@ -122,6 +140,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logPurchase(String itemPrice, String currency, boolean success, String itemName, String itemType, String itemId, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         PurchaseEvent event = new PurchaseEvent();
 
         if (currency != null)
@@ -142,6 +163,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logRating(String rating, String contentId, String contentType, String contentName, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         RatingEvent event = new RatingEvent();
         event.putRating(Integer.valueOf(rating));
 
@@ -158,6 +182,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logSearch(String query, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         SearchEvent event = new SearchEvent();
         event.putQuery(query);
         addCustomAttributes(event, customAttributes);
@@ -166,6 +193,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logShare(String method, String contentName, String contentType, String contentId, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         ShareEvent event = new ShareEvent();
         event.putMethod(method);
         if (contentId != null)
@@ -180,6 +210,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logSignUp(String method, boolean success, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         SignUpEvent event = new SignUpEvent();
         event.putMethod(method);
         event.putSuccess(success);
@@ -189,6 +222,9 @@ public class SMXAnswers extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void logStartCheckout(String totalPrice, String count, String currency, ReadableMap customAttributes) {
+        if (!Fabric.isInitialized()) {
+            return;
+        }
         StartCheckoutEvent event = new StartCheckoutEvent();
         if (currency != null)
             event.putCurrency(Currency.getInstance(currency));
