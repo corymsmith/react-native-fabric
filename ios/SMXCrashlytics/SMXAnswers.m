@@ -75,8 +75,8 @@ RCT_EXPORT_METHOD(logAddToCart:(nullable NSString *)itemPriceOrNil
 }
 
 RCT_EXPORT_METHOD(logStartCheckout:(nullable NSString *)totalPriceOrNil
-                  currency:(nullable NSString *)currencyOrNil
                   itemCount:(nullable NSString *)itemCountOrNil
+                  currency:(nullable NSString *)currencyOrNil
                   customAttributes:(nullable ANS_GENERIC_NSDICTIONARY(NSString *, id) *)customAttributesOrNil){
   [Answers logStartCheckoutWithPrice:[self getDecimalFromString:totalPriceOrNil] currency:currencyOrNil itemCount:[self getIntegerFromString:itemCountOrNil] customAttributes:customAttributesOrNil];
 }
