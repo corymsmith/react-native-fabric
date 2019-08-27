@@ -290,6 +290,8 @@ Answers.logSignUp('Twitter', true);
 
 Answers.logPurchase(24.99,'USD',true, 'Air Jordans', 'shoes', '987654');
 
+Answers.logStartCheckout(24.99, 1, 'USD', { productName: 'Air Jordans'});
+
 
 ``` 
 

@@ -11,7 +11,7 @@ declare module 'react-native-fabric' {
          * API for interacting with the Crashlytics kit.
          *
          * https://docs.fabric.io/ios/crashlytics/index.html
-         */        
+         */
         Crashlytics: {
             crash(): void;
             throwException(): void;
@@ -26,7 +26,7 @@ declare module 'react-native-fabric' {
             setNumber(key: string, value: number): void;
             setString(key: string, value: string): void;
             recordCustomExceptionName(name: string, reason: string, frameArray: Array<Object>): void;
-        }  
+        }
 
         /**
          * API for interacting with the Answers kit.
@@ -130,7 +130,7 @@ declare module 'react-native-fabric' {
              * @param attributes Any additional user-defined attributes to be logged.
              */
             logInvite(method?: string, attributes?: Attributes): void;
-  
+
             /**
              * Send the Content View tracking event.
              *
@@ -144,7 +144,21 @@ declare module 'react-native-fabric' {
              * https://docs.fabric.io/android/answers/answers-events.html#custom-event
              */
             logCustom(name: string, attributes?: Attributes): void;
-        }       
+
+            /**
+             * Sends the Start Checkout tracking event.
+             *
+             * All parameters are optional.
+             *
+             * https://docs.fabric.io/android/answers/answers-events.html#start-checkout
+             *
+             * @param totalPrice An optional total price of all items in cart in the currency specified.
+             * @param count An optional count of items in cart.
+             * @param currency An optional  ISO4217 currency code.
+             * @param attributes Any additional user-defined attributes to be logged.
+             */
+            logStartCheckout(totalPrice?: number, count?: number, currency?: string, attributes?: Object): void;
+        }
     }
 
     /**
@@ -152,7 +166,7 @@ declare module 'react-native-fabric' {
      */
     interface Attributes {
         [index: string]: string | number;
-    } 
+    }
 
     var Fabric: Fabric;
     export = Fabric;
